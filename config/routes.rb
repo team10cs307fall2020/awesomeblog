@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   get "user/sign_up" => "user#signup"
   root "user#login"
 
-
+  get 'post/index'
+  resources :posts do
+    resources :comments
+  end
+  # root 'post#index'
 
 
 end
