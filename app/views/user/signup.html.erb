@@ -1,0 +1,13 @@
+<title> AwsomeBlogSignupPage </title>
+<h1 style="text-align: center; font-family: 'ROG Fonts v1.6'; font-size: 600%"> Awesome Blog </h1>
+<form style= "text-align: center;" action="/action_page.php">
+  <label style= "text-align: left; font-size: 120%" for="email">Please Enter Email Address:</label><br>
+  <input type="text" id="username" name="username" placeholder="Enter email" required><br>
+  <label style= "text-align: left; font-size: 120%" for="username">Please Enter User name:</label><br>
+  <input type="text" id="username" name="username" placeholder="Enter username" required><br>
+  <label style= "text-align: left; font-size: 120%" for="password">Please Set Password:</label><br>
+  <input type="text" id="password" name="password" placeholder="Enter password" required><br><br>
+  <label style= "text-align: left; font-size: 120%" for="password">Please Confirm Password:</label><br>
+  <input type="text" id="password" name="password" placeholder="Confirm password" required><br><br>
+  <input style="font-size: large" type="submit" value="Sign-up"> <p style="font-size: x-small"><%= link_to 'Already have an account?', user_log_in_path %></p>
+</form>
