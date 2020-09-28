@@ -1,6 +1,7 @@
 SOURCE = "abcdefghijklmnopgrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 ENCODE = SOURCE.split('').shuffle.join
 
+require 'digest'
 
 
 def encode(pw)
@@ -15,13 +16,21 @@ def match(pw1, pw2)
     pw1 == pw2
 end
 
+def hash(pw)
+  Digest::MD5.hexdigest(pw)
+end
+
+#merge into database table
+def merge
+  add_column :username, :password_md5, :string
+end
 
 def restric(pw)
     if pw =~ /\A(?=.{8,}) (?=.*[[:^alnum:]])/x    #8 length mininum with one special char
-        puts "auth"  #on
+        #puts "auth"  #on
         return 1
     else 
-        puts "fail"
+        #puts "fail"
         return 0
     end
 end
@@ -32,8 +41,4 @@ end
 
 test = "12bd78"
 
-test1 = encode(test)
-test2 = decode(test1)
 
-puts(test1)
-puts(test2)
