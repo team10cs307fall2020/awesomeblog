@@ -21,4 +21,19 @@ ActiveRecord::Schema.define(version: 2020_09_27_041650) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.string :topic
+    t.string :title
+    t.text :text
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string :commenter
+    t.text :body
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+  
 end
