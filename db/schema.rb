@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2020_09_24_124311) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -17,8 +18,31 @@ ActiveRecord::Schema.define(version: 2020_09_24_124311) do
     t.string "username"
     t.string "password"
     t.string "email"
+
+ActiveRecord::Schema.define(version: 2020_09_27_041650) do
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "Name"
+    t.string "Email"
+    t.string "Phone"
+    t.text "Bio"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.string :topic
+    t.string :title
+    t.text :text
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string :commenter
+    t.text :body
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+  
 end
