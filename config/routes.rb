@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   get 'users/login'
   get 'users/signup'
   resources :users
