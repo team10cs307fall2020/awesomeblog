@@ -1,0 +1,42 @@
+<%= form_for @user do |f| %>
+
+  <% if @user.errors.any? %>
+    <div id="error_explanation" style="align-items: center">
+      <h2>
+        <%= pluralize(@user.errors.count, "error") %> prohibited
+        this user from being created:
+      </h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <p style="text-align: center">
+    <%= f.label :email, "Enter Email" %>
+    <%= f.text_field :email %>
+  </p>
+
+  <p style="text-align: center">
+    <%= f.label :username, "Enter Username" %>
+    <%= f.text_field :username %>
+  </p>
+  <p style="text-align: center">
+    <%= f.label :password, "Enter Password" %>
+    <%= f.password_field :password%>
+  </p>
+
+  <p style="text-align: center">
+    <%= f.label :password, "Confirm Password" %>
+    <%= f.password_field :password_confirmation%>
+  </p>
+
+
+  <p style="text-align: center">
+    <%= f.submit "Sign-up" %>
+  </p>
+
+<% end %>
