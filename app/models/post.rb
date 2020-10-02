@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  belongs_to :user
   has_many :comments, dependent: :destroy
   validates :topic, presence: { message: "topic cannot be empty" },
             length: {maximum: 100}
