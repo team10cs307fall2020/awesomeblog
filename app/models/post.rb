@@ -7,6 +7,7 @@ class Post < ApplicationRecord
             length: {maximum: 100}
   validates :text, presence: { message: "text cannot be empty" },
             length: {maximum: 200}
+  attr_accessor :anonymous
   #validates :anonymous, ...
   # belongs_to :user
   # belongs_to :topic
