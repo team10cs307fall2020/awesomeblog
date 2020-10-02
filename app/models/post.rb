@@ -10,3 +10,23 @@ class Post < ApplicationRecord
   # belongs_to :user
   # belongs_to :topic
 end
+
+
+
+#def aug
+#  Post.find_by_sql("SELECT posts.title FROM posts INNER JOIN topics ON posts.topic = topics.title")
+#end
+
+#def fuc1
+  # Post.find_by_sql("SELECT posts.title FROM posts INNER JOIN topics ON posts.topic = topics.title")
+  # # Post.distinct.pluck(:topic)
+#end
+
+#def fuc2
+# Post.find_by_sql("SELECT posts.text FROM posts INNER JOIN topics ON posts.topic = topics.title")
+# Post.distinct.pluck(:text)
+#end
+
+#<p>
+#<%= Post.find_by_sql("SELECT posts.topic FROM posts INNER JOIN topics ON posts.topic = topics.title") %>
+#</p>

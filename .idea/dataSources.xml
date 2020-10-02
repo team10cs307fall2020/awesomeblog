@@ -7,5 +7,29 @@
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db/development.sqlite3</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="Rails awesomeblog: production" uuid="d2232f59-3204-43f5-b740-27afe9c89fbd">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://127.0.0.1:3306/AwesomeBlog_production</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails awesomeblog: test" uuid="9c570cdb-003c-4b1d-80a6-f53e7dd9842d">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://127.0.0.1:3306/AwesomeBlog_test</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails awesomeblog: development" uuid="09f21256-99a4-42e7-9284-aa686ede967e">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://127.0.0.1:3306/AwesomeBlog_development</jdbc-url>
+    </data-source>
   </component>
 </project>

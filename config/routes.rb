@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+
+  get 'topics/index'
+  resources :topics
+
+
   get 'users/login'
   get 'users/signup'
   resources :users

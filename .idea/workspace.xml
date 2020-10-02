@@ -15,26 +15,31 @@
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
+    </expand>
+    <select>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:upstream" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
       </path>
-    </expand>
-    <select />
+    </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15872f0e-782c-4e26-88fa-9d5d26327994" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/users/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/users/signup.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/topics.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/helpers/topics_helper.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/controllers/topics_controller_test.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/fixtures/topics.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/models/topic_test.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.generators" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.generators" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/awesomeblog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/awesomeblog.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/user_controller.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/user/login.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/login.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/user/signup.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/post.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/post.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/posts/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/posts/index.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +65,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.ruby.settings.RubyActiveModuleSdkConfigurable" />
   </component>
   <component name="RubyModuleManagerSettings">
     <option name="blackListedRootsPaths">
@@ -73,7 +79,7 @@
       <module name="awesomeblog" />
       <predefined_log_file enabled="true" id="RUBY_RAILS_SERVER" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
@@ -93,7 +99,7 @@
       <module name="awesomeblog" />
       <predefined_log_file enabled="true" id="RUBY_RAILS_SERVER" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
@@ -112,7 +118,7 @@
     <configuration name="spec: awesomeblog" type="RakeRunConfigurationType" factoryName="Rake">
       <module name="awesomeblog" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
@@ -131,7 +137,7 @@
     <configuration name="test: awesomeblog" type="RakeRunConfigurationType" factoryName="Rake">
       <module name="awesomeblog" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
@@ -171,6 +177,11 @@
       <workItem from="1600877326959" duration="6889000" />
       <workItem from="1600950109348" duration="7771000" />
       <workItem from="1601301575771" duration="21290000" />
+      <workItem from="1601621596755" duration="2727000" />
+      <workItem from="1601624802396" duration="17054000" />
+      <workItem from="1601641948966" duration="799000" />
+      <workItem from="1601643263966" duration="2543000" />
+      <workItem from="1601646001370" duration="564000" />
     </task>
     <servers />
   </component>
@@ -182,7 +193,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -190,25 +213,53 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="246" y="378" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601621604568">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="246" y="378" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1601621604568" />
     <state x="800" y="421" key="FileChooserDialogImpl" timestamp="1600464034024">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="800" y="421" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1600464034024" />
-    <state width="1340" height="259" key="GridCell.Tab.0.bottom" timestamp="1600463948315">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1236" height="404" key="GridCell.Tab.0.bottom" timestamp="1601624338879">
+      <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state width="1340" height="259" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1600463948315" />
-    <state width="1340" height="259" key="GridCell.Tab.0.center" timestamp="1600463948314">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1236" height="404" key="GridCell.Tab.0.bottom/0.0.2560.1440@0.0.2560.1440" timestamp="1601624338879" />
+    <state width="1236" height="404" key="GridCell.Tab.0.center" timestamp="1601624338879">
+      <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state width="1340" height="259" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1600463948314" />
-    <state width="1340" height="259" key="GridCell.Tab.0.left" timestamp="1600463948314">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1236" height="404" key="GridCell.Tab.0.center/0.0.2560.1440@0.0.2560.1440" timestamp="1601624338879" />
+    <state width="1236" height="404" key="GridCell.Tab.0.left" timestamp="1601624338879">
+      <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state width="1340" height="259" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1600463948314" />
-    <state width="1340" height="259" key="GridCell.Tab.0.right" timestamp="1600463948315">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1236" height="404" key="GridCell.Tab.0.left/0.0.2560.1440@0.0.2560.1440" timestamp="1601624338879" />
+    <state width="1236" height="404" key="GridCell.Tab.0.right" timestamp="1601624338879">
+      <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state width="1340" height="259" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1600463948315" />
+    <state width="1236" height="404" key="GridCell.Tab.0.right/0.0.2560.1440@0.0.2560.1440" timestamp="1601624338879" />
+    <state x="155" y="364" key="SettingsEditor" timestamp="1601621601203">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="155" y="364" key="SettingsEditor/0.0.2560.1440@0.0.2560.1440" timestamp="1601621601203" />
+    <state x="239" y="448" key="Vcs.Push.Dialog.v2" timestamp="1601646166650">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="239" y="448" key="Vcs.Push.Dialog.v2/0.0.2560.1440@0.0.2560.1440" timestamp="1601646166650" />
+    <state x="472" y="633" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601646155261">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="472" y="633" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1440@0.0.2560.1440" timestamp="1601646155261" />
+    <state x="310" y="342" key="run.anything.popup" timestamp="1601621985697">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="310" y="342" key="run.anything.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1601621985697" />
+    <state x="317" y="329" width="672" height="678" key="search.everywhere.popup" timestamp="1601641955263">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="317" y="329" width="672" height="678" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1601641955263" />
   </component>
 </project>
