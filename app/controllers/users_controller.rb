@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def login
+    render 'login'
   end
 
   def new
