@@ -1,0 +1,28 @@
+<p>
+  <%= "New topic Created Successfully!" %>
+</p>
+
+
+<p>
+  <strong>Topic Name:</strong> <br>
+  <%= @topic.title %>
+</p>
+
+<p>
+  <strong>Topic Description:</strong> <br>
+  <%= @topic.desc %>
+</p>
+
+<p>
+  <strong>Topic Post:</strong> <br>
+
+</p>
+
+// TODO :
+
+
+
+
+<%= link_to 'Edit', edit_topic_path(@topic) %> |
+<%= link_to 'Back', topics_path %> | <%= link_to 'Check', posts_path %>
+

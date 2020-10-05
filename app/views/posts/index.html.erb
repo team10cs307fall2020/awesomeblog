@@ -1,5 +1,8 @@
 <h1>User Profile</h1>
+link_to 'Log out', {:controller => :users, :action => :login}, data: { confirm: 'Are you sure about that?' }
+<%= link_to 'Back to topic', topics_path %><br><br><br><br><br>
 <%= link_to 'Make a post', new_post_path %>
+
 <table>
   <tr>
     <th>Title</th>

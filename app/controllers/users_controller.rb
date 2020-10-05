@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def login
+    render 'login'
   end
 
   def new
@@ -12,6 +13,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.profile = Profile.create(Name: @user.username, Email: @user.email, Phone: "", Bio: "")
     if @user.save
       redirect_to users_login_path
     else
@@ -24,12 +26,14 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  private def show
-    @user = User.find(params:[:id])
+  def show
+    @user = User.find_by_username(params[:username])
+    @profile = @user.profile
+    redirect_to user_profile_path(@profile)
   end
 
   private def edit
-    @user = User.find(params:[:id])
+    @user = User.find(params[:id])
   end
 
   private def update
@@ -44,17 +48,16 @@ class UsersController < ApplicationController
     end
   end
 
-  private def destroy
-    @user = User.find(params[:id])
+  def destroy
+    @user = User.find_by_username(params[:username])
     @user.destroy
     flash[:notice] = "User was deleted"
-    redirect_to users_path
+    redirect_to 'login'
   end
 
   private def user_params
     params.require(:user).permit(:password, :username, :email, :password_confirmation)
   end
-
 
 end
 

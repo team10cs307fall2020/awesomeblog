@@ -19,5 +19,5 @@
   <%= @profile.Bio %>
 </p>
 
-<%= link_to 'Edit', edit_profile_path %>
-<%= link_to 'Delete', profile_path(@profile), method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Edit', edit_user_profile_path %>
+<%= link_to 'Destroy(Do not click 会有bug)', user_profile_url(@profile) %>

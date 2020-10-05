@@ -1,13 +1,20 @@
 Rails.application.routes.draw do
 
+
+  get 'topics/index'
+  resources :topics
+
+
   get 'users/login'
   get 'users/signup'
-  resources :users
+  resources :users do
+    resources :profiles
+  end
   root "users#login"
 
 
   get 'profiles/show'
-  resources :profiles
+  #resources :profiles
   
   # root 'profiles#show'
 
