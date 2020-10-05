@@ -19,7 +19,7 @@ end
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_one :profile, presence: true, dependent: :destroy
+  has_one :profile, dependent: :destroy
   validates :password, presence: true, password:true
   validates :password, confirmation: true
   validates :username, presence: true
