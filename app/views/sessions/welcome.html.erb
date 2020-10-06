@@ -1,8 +1,8 @@
-
 <title> AwsomeBlogLoginPage </title>
 <% if logged_in? %>
   <h1>Here you are, <%= current_user.username %></h1>
 <%end%>
 <%= link_to "Logout", logout_path, method: "get"%>
 <%= link_to "Topics", topics_index_path%>
+
 

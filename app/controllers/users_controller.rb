@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   #todo Create post/profile object when new user created
   def create
     @user = User.new(user_params)
+    @user.profile = Profile.create(Name: @user.username, Email: @user.email, Phone: "", Bio: "")
     #@user.build_profile(Email: params[:email], Name: params[:username])
     session[:user_id] = @user.id
     if @user.save
@@ -29,11 +30,14 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params:[:id])
+    @user = User.find(params[:id])
+    @profile = @user.profile
+    redirect_to user_profile_path(@profile)
   end
 
+
   def edit
-    @user = User.find(params:[:id])
+    @user = User.find(params[:id])
   end
 
   def update
@@ -52,13 +56,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
     flash[:notice] = "User was deleted"
-    redirect_to users_path
+    redirect_to login_path
   end
 
   private def user_params
     params.require(:user).permit(:password, :username, :email, :password_confirmation)
   end
-
 
 end
 

@@ -11,12 +11,14 @@ Rails.application.routes.draw do
   get 'users/index'
   get 'users/signup'
   get 'logout', to: 'sessions#destroy'
-  resources :users
+  resources :users do
+    resources :profiles
+  end
+
   root "sessions#login"
 
 
   get 'profiles/show'
-  resources :profiles
 
   # root 'profiles#show'
 
