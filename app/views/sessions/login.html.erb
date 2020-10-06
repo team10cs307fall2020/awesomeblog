@@ -1,0 +1,21 @@
+
+<title> AwesomeBlogLoginPage </title>
+<h1 style="text-align: center; font-family: 'ROG Fonts v1.6'; font-size: 600%"> Awesome Blog </h1>
+<%= form_tag '/login' do %>
+
+  <p style="text-align: center">
+    <%= label_tag :email, "Enter Username" %>
+    <%= text_field_tag :username %>
+  </p>
+
+  <p style="text-align: center">
+    <%= label_tag :password, "Enter Password" %>
+    <%= password_field_tag :password%>
+  </p>
+
+  <p style="text-align: center">
+    <%= submit_tag "Login" %>
+  </p>
+
+<% end %>
+<p style="font-size: x-small; text-align: center"><%= link_to 'Sign_up?', users_signup_path %></p>

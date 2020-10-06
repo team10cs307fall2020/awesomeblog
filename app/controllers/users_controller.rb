@@ -1,8 +1,5 @@
 class UsersController < ApplicationController
-  def login
-    render 'login'
-  end
-
+  #skip_before_action :authorized
   def new
     @user = User.new
   end
@@ -10,12 +7,18 @@ class UsersController < ApplicationController
   def index
     @user = User.all
   end
-
+  #todo Create post/profile object when new user created
   def create
     @user = User.new(user_params)
     @user.profile = Profile.create(Name: @user.username, Email: @user.email, Phone: "", Bio: "")
+    #@user.build_profile(Email: params[:email], Name: params[:username])
+    session[:user_id] = @user.id
     if @user.save
-      redirect_to users_login_path
+      #if @user.profile.save
+      redirect_to login_path, notice: "User created!"
+      #else
+      #flash.now[:alert] = "Profile creation failed!"
+      #end
     else
       render 'signup'
     end
@@ -32,11 +35,12 @@ class UsersController < ApplicationController
     redirect_to user_profile_path(@profile)
   end
 
-  private def edit
-    @user = User.find(params[:id])
+
+  def edit
+    @user = User.find(params:[:id])
   end
 
-  private def update
+  def update
     @user = User.find(params[:id])
 
     if @user.update(user_params)
@@ -49,7 +53,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find_by_username(params[:username])
+    @user = User.find(params[:id])
     @user.destroy
     flash[:notice] = "User was deleted"
     redirect_to 'login'
