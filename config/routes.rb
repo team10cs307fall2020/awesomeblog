@@ -10,12 +10,14 @@ Rails.application.routes.draw do
   get 'welcome', to: 'sessions#welcome'
   get 'users/index'
   get 'users/signup'
-  resources :users
+  get 'logout', to: 'sessions#destroy'
+  resources :users do
+    resources :profiles
+  end
   root "sessions#login"
 
 
   get 'profiles/show'
-  resources :profiles
 
   # root 'profiles#show'
 

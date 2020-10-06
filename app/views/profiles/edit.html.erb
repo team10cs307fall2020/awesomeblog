@@ -1,5 +1,5 @@
 <h1>Editing Profile</h1>
-<%= form_for :profile, url: profile_path(@profile), method: :patch do |f| %>
+<%= form_for :profile, url: user_profile_path(@profile), method: :patch do |f| %>
   <% if @profile.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@profile.errors.count, "error") %> prohibited
@@ -13,12 +13,12 @@
   <% end %>
   <p>
     <%= f.label :Name %><br>
-    <%= f.text_field :Name %>
+    <%= @profile.Name %>
   </p>
 
   <p>
     <%= f.label :Email %><br>
-    <%= f.email_field :Email %>
+    <%= @profile.Email %>
   </p>
 
   <p>
@@ -37,4 +37,4 @@
 
 <% end %>
 
-<%= link_to 'Back', profile_path(@profile) %>
+<%= link_to 'Back', user_profile_path(@profile) %>
