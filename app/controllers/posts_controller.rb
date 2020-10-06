@@ -5,7 +5,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @user = User.find(params[:user_id])
+    @post = @user.posts.new(post_params)
 
     if @post.save
       flash[:notice] = "Post was successfully created"
@@ -41,7 +42,8 @@ class PostsController < ApplicationController
 
 
   def destroy
-    @post = Post.find(params[:id])
+    @user = User.find(params[:user_id])
+    @post = @user.posts.find(params[:id])
     @post.destroy
     flash[:notice] = "Post was deleted"
     redirect_to posts_path
