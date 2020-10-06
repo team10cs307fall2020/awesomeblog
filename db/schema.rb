@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2020_10_03_135946) do
     t.bigint "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
@@ -25,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_10_03_135946) do
     t.string "topic"
     t.string "title"
     t.text "text"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
