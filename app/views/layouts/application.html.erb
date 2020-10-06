@@ -7,6 +7,59 @@
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <style>
+      ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #333;
+      }
+
+      li {
+          float: left;
+      }
+
+      li a, .dropbtn {
+          display: inline-block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+      }
+
+      li a:hover, .dropdown:hover .dropbtn {
+          background-color: red;
+      }
+
+      li.dropdown {
+          display: inline-block;
+      }
+
+      .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f9f9f9;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+      }
+
+      .dropdown-content a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+          text-align: left;
+      }
+
+      .dropdown-content a:hover {background-color: #f1f1f1;}
+
+      .dropdown:hover .dropdown-content {
+          display: block;
+      }
+  </style>
 </head>
 
 <body>
@@ -16,7 +69,7 @@
     <div class="<%= flash_class(key) %> no-radius fade in">
       <a href="#" data-dismiss="alert" class="close">×</a>
       <ul>
-        <li>
+        <li style="color: brown">
           <strong><%= flash_prefix(key)%></strong>&nbsp;<%= value %>
         </li>
       </ul>
@@ -24,6 +77,21 @@
   <% end %>
 </div>
 <h1 style="text-align: center; font-family: 'ROG Fonts v1.6'; font-size: 600%"> Awesome Blog </h1>
+<% if logged_in? %>
+  <ul>
+    <li class="active" style="float: right"> <%= link_to "Home", welcome_path%>  </li>
+    <li> <%= link_to "Profile", user_path(current_user)%> </li>
+    <li> <%= link_to "Topics", topics_index_path%>  </li>
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">Account</a>
+      <div class="dropdown-content">
+        <%= link_to "Logout", logout_path, method: :get%>
+        <%= link_to "Delete Account", user_path(current_user), method: :delete, data: { confirm: 'Are you sure?' }%>
+        <a href="#">Settings</a>
+      </div>
+    </li>
+  </ul>
+<%end%>
 <%= yield %>
 <!-- button to manage accounts; Usage for 'Admin' user only -->
 <% if logged_in? %>
