@@ -1,11 +1,8 @@
-
-<title> AwesomeBlogLoginPage </title>
-<h1 style="text-align: center; font-family: 'ROG Fonts v1.6'; font-size: 600%"> Awesome Blog </h1>
+<title> AwsomeBlogLoginPage </title>
 <% if logged_in? %>
   <h1>Here you are, <%= current_user.username %></h1>
 <%end%>
-<%= link_to "Logout", logout_path, method: :get%>
-<%= link_to "Profile", user_path(current_user)%>
-<%= link_to "Topics", topics_index_path%><br>
-<%= link_to "Delete Account", user_path(current_user), method: :delete, data: { confirm: 'Are you sure?' }%>
+<%= link_to "Logout", logout_path, method: "get"%>
+<%= link_to "Topics", topics_index_path%>
+
 
