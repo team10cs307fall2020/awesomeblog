@@ -38,7 +38,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:user_id])
     @profile.destroy
 
-    redirect_to
+    redirect_to @profile
   end
 
   private

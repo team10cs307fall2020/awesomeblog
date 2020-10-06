@@ -30,14 +30,14 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by_username(params[:username])
+    @user = User.find(params[:id])
     @profile = @user.profile
     redirect_to user_profile_path(@profile)
   end
 
 
   def edit
-    @user = User.find(params:[:id])
+    @user = User.find(params[:id])
   end
 
   def update
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
     flash[:notice] = "User was deleted"
-    redirect_to 'login'
+    redirect_to login_path
   end
 
   private def user_params
