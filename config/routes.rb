@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'welcome', to: 'sessions#welcome'
   get 'users/index'
   get 'users/signup'
+  get 'logout', to: 'sessions#destroy'
   resources :users
   root "sessions#login"
 
