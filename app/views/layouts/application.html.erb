@@ -1,15 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>AwesomeBlog</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>AwesomeBlog</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+<!-- config of flash notice; displaying notice on top left of screen -->
+<div id="flash-messages-section">
+  <% flash.each do |key, value| %>
+    <div class="<%= flash_class(key) %> no-radius fade in">
+      <a href="#" data-dismiss="alert" class="close">×</a>
+      <ul>
+        <li>
+          <strong><%= flash_prefix(key)%></strong>&nbsp;<%= value %>
+        </li>
+      </ul>
+    </div>
+  <% end %>
+</div>
+<%= yield %>
+<!-- button to manage accounts; Usage for 'Admin' user only -->
+<% if logged_in? %>
+  <% if current_user.username == "Admin"%>
+    <%= link_to 'Manage Accounts', users_index_path %>
+  <% end  %>
+<% end  %>
+
+</body>
 </html>

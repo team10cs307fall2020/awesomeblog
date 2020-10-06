@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_10_02_071358) do
     t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
+  #todo Add reference to user class
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "topic"
     t.string "title"
