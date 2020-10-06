@@ -7,6 +7,8 @@ class CreatePosts < ActiveRecord::Migration[6.0]
       t.text :text
       t.boolean :anonymous
 
+      add_index :posts, :user_id
+
       t.timestamps
     end
   end

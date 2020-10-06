@@ -17,7 +17,7 @@
       <td><%= post.created_at %>
       <% if post.anonymous %>
       <td>Anonymous
-        <% else @user = User.find(params[:user_id])%>
+        <% else @user = User.find_by(username: current_user.username)%>
         <td><%= @user.username %>
         <% end %>
       <td><%= link_to 'Show', post_path(post) %></td>
