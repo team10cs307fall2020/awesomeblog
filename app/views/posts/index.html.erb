@@ -1,5 +1,5 @@
 <h1>User Profile</h1>
-link_to 'Log out', {:controller => :users, :action => :login}, data: { confirm: 'Are you sure about that?' }
+<%= link_to 'Log out', '/welcome'%><br>
 <%= link_to 'Back to topic', topics_path %><br><br><br><br><br>
 <%= link_to 'Make a post', new_post_path %>
 
@@ -7,6 +7,8 @@ link_to 'Log out', {:controller => :users, :action => :login}, data: { confirm: 
   <tr>
     <th>Title</th>
     <th>Text</th>
+    <th>Posted at</th>
+    <th>User</th>
   </tr>
 
   <% @post.each do |post| %>
@@ -14,6 +16,11 @@ link_to 'Log out', {:controller => :users, :action => :login}, data: { confirm: 
       <td><%= post.title %></td>
       <td><%= post.text %></td>
       <td><%= post.created_at %>
+      <% if post.anonymous %>
+      <td>Anonymous
+        <% else @user = User.find_by(username: current_user.username)%>
+        <td><%= @user.username %>
+        <% end %>
       <td><%= link_to 'Show', post_path(post) %></td>
       <td><%= link_to 'Edit', edit_post_path(post) %></td>
       <td><%= link_to 'Destroy', post_path(post),
