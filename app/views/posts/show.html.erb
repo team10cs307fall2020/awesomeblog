@@ -12,7 +12,7 @@
   <strong>Posted by:</strong>
   <% if post.anonymous %>
     <td>Anonymous
-  <% else @user = User.find(params[:user_id])%>
+  <% else  @user = User.find_by(username: current_user.username)%>
     <td><%= @user.username %>
   <% end %>
 </p>
