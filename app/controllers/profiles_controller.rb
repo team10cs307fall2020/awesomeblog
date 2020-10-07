@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @profile = Profile.find(params[:user_id])
+    @profile = Profile.find_by(params[:Name])
   end
 
   def new
@@ -21,11 +21,11 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    @profile = Profile.find(params[:user_id])
+    @profile = Profile.find_by(params[:Name])
   end
 
   def update
-    @profile = Profile.find(params[:user_id])
+    @profile = Profile.find_by(params[:Name])
 
     if @profile.update(profile_params)
       redirect_to user_profile_path(@profile)
@@ -35,7 +35,7 @@ class ProfilesController < ApplicationController
   end
 
   def destroy
-    @profile = Profile.find(params[:user_id])
+    @profile = Profile.find_by(params[:Name])
     @profile.destroy
 
     redirect_to @profile
