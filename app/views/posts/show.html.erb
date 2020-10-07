@@ -8,6 +8,15 @@
   <%= @post.text %>
 </p>
 
+<p>
+  <strong>Posted by:</strong>
+  <% if post.anonymous %>
+    <td>Anonymous
+  <% else @user = User.find(params[:user_id])%>
+    <td><%= @user.username %>
+  <% end %>
+</p>
+
 <h2>Comments</h2>
 <% @post.comments.each do |comment| %>
   <p>
