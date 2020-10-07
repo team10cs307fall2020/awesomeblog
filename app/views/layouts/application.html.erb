@@ -9,13 +9,16 @@
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   <style>
+
       ul.nav-section {
+
           list-style-type: none;
           margin: 0;
           padding: 0;
           overflow: hidden;
           background-color: #333;
       }
+
 
       li.nav-section {
           float: left;
@@ -87,6 +90,7 @@
       <a href="javascript:void(0)" class="dropbtn">Account</a>
       <div class="dropdown-content">
         <%= link_to "Logout", logout_path, method: :get, data: { confirm: 'Are you sure about that?' }%>
+
         <%= link_to "Delete Account", user_path(current_user), method: :delete, data: { confirm: 'Are you sure?' }%>
         <a href="#">Settings</a>
       </div>

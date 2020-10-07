@@ -1,14 +1,14 @@
 class CreateUsers < ActiveRecord::Migration[6.0]
   def change
-    create_table :users do |t|
-      t.integer :userid
-      t.string :username
-      t.string :password
-      t.string :email
-      t.string :phone
-      t.text :bio
+    unless table_exists?(:users)
+      create_table :users do |t|
+        t.string :username
+        t.string :password
+        t.string :email
 
-      t.timestamps
+        t.timestamps
+      end
     end
+
   end
 end
