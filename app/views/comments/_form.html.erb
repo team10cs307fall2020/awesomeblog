@@ -11,11 +11,6 @@
     <%= f.submit %>
   </p>
 
-  <% if Topic.exists?(title: @post.topic) %>
-    <p>Shared Topic Discovered</p>
-  <% else %>
-    <p>Creating a New Topic Here</p>
-
   <% end %>
 
 <% end %>
