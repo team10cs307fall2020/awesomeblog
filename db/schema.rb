@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_10_03_135946) do
   end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id"
     t.string "topic"
     t.string "title"
     t.text "text"

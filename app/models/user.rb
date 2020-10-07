@@ -21,6 +21,6 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   validates :password, presence: true, password:true
   validates :password, confirmation: true
-  validates :username, presence: true
-  validates :email, presence:true, email:true
+  validates :username, presence: true, uniqueness: true
+  validates :email, presence:true, email:true, uniqueness: true
 end

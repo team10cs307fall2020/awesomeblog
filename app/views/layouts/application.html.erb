@@ -9,7 +9,7 @@
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   <style>
-      ul {
+      ul.nav-section {
           list-style-type: none;
           margin: 0;
           padding: 0;
@@ -17,7 +17,7 @@
           background-color: #333;
       }
 
-      li {
+      li.nav-section {
           float: left;
       }
 
@@ -78,14 +78,15 @@
 </div>
 <h1 style="text-align: center; font-family: 'ROG Fonts v1.6'; font-size: 600%"> Awesome Blog </h1>
 <% if logged_in? %>
-  <ul>
+  <ul class="nav-section">
     <li class="active" style="float: right"> <%= link_to "Home", welcome_path%>  </li>
-    <li> <%= link_to "Profile", user_path(current_user)%> </li>
-    <li> <%= link_to "Topics", topics_index_path%>  </li>
+    <li class="nav-section"> <%= link_to "Profile", user_path(current_user)%> </li>
+    <li class="nav-section"> <%= link_to "Topics", topics_index_path%>  </li>
+    <li class="nav-section"> <%= link_to "Posts", posts_path%>  </li>
     <li class="dropdown">
       <a href="javascript:void(0)" class="dropbtn">Account</a>
       <div class="dropdown-content">
-        <%= link_to "Logout", logout_path, method: :get%>
+        <%= link_to "Logout", logout_path, method: :get, data: { confirm: 'Are you sure about that?' }%>
         <%= link_to "Delete Account", user_path(current_user), method: :delete, data: { confirm: 'Are you sure?' }%>
         <a href="#">Settings</a>
       </div>

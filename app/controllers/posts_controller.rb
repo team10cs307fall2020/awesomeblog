@@ -5,7 +5,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @user = User.find_by(username: current_user.username)
+    @post = @user.posts.new(post_params)
 
     if @post.save
       flash[:notice] = "Post was successfully created"

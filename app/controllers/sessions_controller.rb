@@ -22,13 +22,12 @@ class SessionsController < ApplicationController
 
   end
 
-  def login
-  end
 
   def welcome
   end
 
   def destroy
+    session.delete(:user_id)
     session[:user_id] = nil
     flash.now[:notice] = "Logged out"
     redirect_to '/login'
