@@ -9,6 +9,19 @@ class PostsController < ApplicationController
     @post = @user.posts.new(post_params)
 
     if @post.save
+
+
+      if Topic.exists?(title: @post.topic)
+        # No Topic Needed
+      else
+        topic = Topic.new
+        topic.title = @post.topic
+        topic.desc = "default"
+        topic.save!
+        flash[:notice] = topic
+      end
+
+      
       flash[:notice] = "Post was successfully created"
       redirect_to @post
     else
