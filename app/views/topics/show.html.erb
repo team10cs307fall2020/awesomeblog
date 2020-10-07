@@ -18,8 +18,23 @@
 
 </p>
 
-// TODO :
 
+
+<table>
+  <tr>
+  <th>Title</th>
+  <th>Text</th>
+  </tr>
+
+
+  <% for i in 0..Post.where(:topic => @topic.title).to_a.pluck(:title, :text).length - 1%>
+    <tr>
+      <td> <%= @post = Post.where(:topic => @topic.title).pluck(:title, :text)[i][0] %></td>
+      <td> <%= @post = Post.where(:topic => @topic.title).pluck(:title, :text)[i][1] %></td>
+    </tr>
+  <% end %>
+
+  </table>
 
 
 

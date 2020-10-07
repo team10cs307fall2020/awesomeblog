@@ -20,7 +20,6 @@
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
@@ -43,6 +42,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1hfiAlnYktWqefGAN0xgI7yiY4t" />
@@ -189,6 +193,14 @@
       <workItem from="1601908985874" duration="6423000" />
       <workItem from="1601993764162" duration="8705000" />
     </task>
+    <task id="LOCAL-00001" summary="Topic with post">
+      <created>1602047515275</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1602047515275</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,24 +211,16 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="master" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Topic with post" />
+    <option name="LAST_COMMIT_MESSAGE" value="Topic with post" />
   </component>
   <component name="WindowStateProjectService">
     <state x="246" y="378" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601621604568">
@@ -252,10 +256,10 @@
     </state>
     <state x="155" y="354" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1601909063006" />
     <state x="155" y="364" key="SettingsEditor/0.0.2560.1440@0.0.2560.1440" timestamp="1601621601203" />
-    <state x="239" y="448" key="Vcs.Push.Dialog.v2" timestamp="1601646166650">
+    <state x="402" y="752" key="Vcs.Push.Dialog.v2" timestamp="1602047599667">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="239" y="448" key="Vcs.Push.Dialog.v2/0.0.2560.1440@0.0.2560.1440" timestamp="1601646166650" />
+    <state x="402" y="752" key="Vcs.Push.Dialog.v2/0.0.2560.1440@0.0.2560.1440" timestamp="1602047599667" />
     <state x="472" y="633" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601646155261">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
