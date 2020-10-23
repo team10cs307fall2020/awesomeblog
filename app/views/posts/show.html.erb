@@ -9,8 +9,10 @@
 
 <p>
   <strong>Text:</strong>
-  <%= @post.text %>
 </p>
+  <p>
+   <%= raw Rinku.auto_link(@post.text, mode = :all)%>
+  </p>
 
 <p>
   <strong>Posted by:</strong>
