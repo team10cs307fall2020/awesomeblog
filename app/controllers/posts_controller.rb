@@ -63,6 +63,16 @@ class PostsController < ApplicationController
   end
 
   private
+  def picture=(picture_field)
+    transaction do
+      if picture_field.size>0 then
+        @picture_size=picture_field.size
+        @picture_type=picture_field.content_type.chomp
+        self.picture_content_type =@picture_type
+        self.picture_data = picture_field.read
+      end
+    end
+  end
   def post_params
     params.require(:post).permit(:topic, :title, :text)
   end
