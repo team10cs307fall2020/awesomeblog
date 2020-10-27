@@ -1,5 +1,6 @@
 class Profile < ApplicationRecord
   belongs_to :user
-  validates :Phone, numericality: {only_integer: true}, length: { maximum: 10, minimum: 10 }
+  #validates :Name, presence: true
+  validates :Phone, length: { maximum: 10, minimum: 10 }, allow_blank: true, numericality: {only_integer: true}
   validates :Bio, length: { maximum: 100 }
 end
