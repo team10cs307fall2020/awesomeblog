@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2020_10_03_135946) do
     t.string "Name"
     t.string "Email"
     t.string "Phone"
+    t.string "gender"
     t.text "Bio"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

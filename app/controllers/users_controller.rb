@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   #todo Create post/profile object when new user created
   def create
     @user = User.new(user_params)
-    @user.profile = Profile.create(Name: @user.username, Email: @user.email, Phone: "", Bio: "")
+    @user.profile = Profile.create(Name: @user.username, Email: @user.email)
     #@user.build_profile(Email: params[:email], Name: params[:username])
     session[:user_id] = @user.id
     if @user.save

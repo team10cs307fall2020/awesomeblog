@@ -5,7 +5,9 @@ class CreateProfiles < ActiveRecord::Migration[6.0]
       t.string :Name
       t.string :Email
       t.string :Phone
+      t.string :gender
       t.text :Bio
+      #serialize :followedTopics, Array
       add_index :profiles, :user_id
 
       t.timestamps

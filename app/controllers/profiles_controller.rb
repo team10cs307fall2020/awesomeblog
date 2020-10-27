@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @profile = Profile.find_by(params[:Name])
+    @profile = Profile.find(params[:user_id])
   end
 
   def new
@@ -21,11 +21,11 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    @profile = Profile.find_by(params[:Name])
+    @profile = Profile.find(params[:user_id])
   end
 
   def update
-    @profile = Profile.find_by(params[:Name])
+    @profile = Profile.find(params[:user_id])
 
     if @profile.update(profile_params)
       redirect_to user_profile_path(@profile)
@@ -35,7 +35,7 @@ class ProfilesController < ApplicationController
   end
 
   def destroy
-    @profile = Profile.find_by(params[:Name])
+    @profile = Profile.find(params[:user_id])
     @profile.destroy
 
     redirect_to @profile
@@ -43,6 +43,6 @@ class ProfilesController < ApplicationController
 
   private
   def profile_params
-    params.require(:profile).permit(:Name, :Email, :Phone, :Bio)
+    params.require(:profile).permit(:Name, :Email, :Phone, :gender, :Bio)
   end
 end
