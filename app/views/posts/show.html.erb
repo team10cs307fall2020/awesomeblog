@@ -18,8 +18,8 @@
   <strong>Posted by:</strong>
   <% if @post.anonymous %>
     <td>Anonymous
-  <% else  @user = User.find_by(username: current_user.username)%>
-    <td><%= @user.username %>
+  <% else %>
+    <td><%= link_to @post.author, users_view_path(@user)%>
   <% end %>
 </p>
 

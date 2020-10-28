@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   def create
     @user = User.find_by(username: current_user.username)
     @post = @user.posts.new(post_params)
+    @post.author = @user.username
 
     if @post.save
 
