@@ -1,26 +1,38 @@
 <h1>Listing Topics</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th></th>
-  </tr>
 
+<table>
+  <% if @topics[0] != nil %>
+    <tr>
+      <th><%= sortable "title" %></th>
+      <th><%= sortable "desc(Rename)" %></th>
+      <th><%= sortable "count(Add)" %></th>
+      <th>Last Update</th>
+      <th></th>
+    </tr>
+    <% else %>
+  <h4>Empty Topics! Create One Through Post Or Below!</h4>
+  <% end %>
   <% @topics.each do |topic| %>
     <tr>
+
+      <% if Post.where(:topic => topic.title).length != 0 %>
+
+
       <td><%= topic.title %></td>
       <td><%= topic.desc %></td>
+      <td><%= Post.where(:topic => topic.title).length %></td>
+      <td><%= Post.where(:topic => topic.title).pluck(:created_at).last %></td>
 
       <td><%= link_to 'Show', topic_path(topic) %></td>
       <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
       <td><%= link_to 'Destroy', topic_path(topic),
                       method: :delete,
                       data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
     </tr>
   <% end %>
-
-  <%= link_to 'New Topic', new_topic_path %>
+  <%= link_to "Create Topic", new_topic_path %>
 
 
 </table>

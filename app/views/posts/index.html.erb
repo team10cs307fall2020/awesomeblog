@@ -4,12 +4,14 @@
 <%= link_to 'Make a post', new_post_path %>
 
 <table>
+  <% if @post[0] != nil %>
   <tr>
     <th>Title</th>
     <th>Text</th>
     <th>Posted at</th>
     <th>User</th>
   </tr>
+  <% end %>
 
   <% @post.each do |post| %>
     <tr>
