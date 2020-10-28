@@ -28,7 +28,7 @@
 
   <p>
     <%= f.label :Gender %><br>
-    <%= f.select :gender, [['Female'],['Male'],['Secret']] %>
+    <%= f.select :gender, %w{ Female Male Secret}, :include_blank => "Blank" %>
   <p>
   <p>
     <%= f.label :Bio %><br>
