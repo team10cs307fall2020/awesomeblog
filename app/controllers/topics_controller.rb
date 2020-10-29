@@ -1,9 +1,18 @@
 class TopicsController < ApplicationController
-
+  helper_method :sort_column, :sort_direction
   def index
-    @topics = Topic.all
+
+    @topics = Topic.order(sort_column + ' ' + sort_direction)
+    #@topics = Topic.all
   end
 
+  def sort_column
+    Topic.column_names.include?(params[:sort]) ? params[:sort] : "title"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
+  end
 
 
   def show
@@ -39,6 +48,11 @@ class TopicsController < ApplicationController
   end
 
   def destroy
+    @topic = Topic.find(params[:id])
+    @post = Post.where(:topic => @topic.title)
+    for i in 0..Post.where(:topic => @topic.title).length - 1
+      @post[i].destroy
+    end
     @topic = Topic.find(params[:id])
     @topic.destroy
     redirect_to topics_path

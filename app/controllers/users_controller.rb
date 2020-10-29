@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   #todo Create post/profile object when new user created
   def create
     @user = User.new(user_params)
-    @user.profile = Profile.create(Name: @user.username, Email: @user.email, Phone: "", Bio: "")
+    @user.profile = Profile.create(Name: @user.username, Email: @user.email)
     #@user.build_profile(Email: params[:email], Name: params[:username])
     session[:user_id] = @user.id
 
@@ -43,11 +43,16 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by(params[:username])
     @profile = @user.profile
     redirect_to user_profile_path(@profile)
   end
 
+  def view
+    @user = User.find_by(params[:username])
+    @profile = @user.profile
+    redirect_to profiles_view_path(@profile)
+  end
 
   def edit
     @user = User.find(params[:id])

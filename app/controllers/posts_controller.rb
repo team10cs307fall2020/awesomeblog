@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   def create
     @user = User.find_by(username: current_user.username)
     @post = @user.posts.new(post_params)
+    @post.author = @user.username
 
     if @post.save
 
@@ -44,7 +45,20 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
 
+    @topic = Topic.where(:title => @post.topic)
+    if Post.where(:topic => @topic[0].title).length == 1
+      @topic[0].destroy
+    end
+
     if @post.update(post_params)
+      if Topic.exists?(title: @post.topic)
+      else
+        topic = Topic.new
+        topic.title = @post.topic
+        topic.desc = "default"
+        topic.save!
+        flash[:notice] = topic
+      end
       flash[:notice] = "Post was updated"
       redirect_to @post
     else
@@ -55,9 +69,23 @@ class PostsController < ApplicationController
 
 
   def destroy
-    @user = User.find(params[:user_id])
-    @post = @user.posts.find(params[:id])
+    # Destroy TBD
+    #
+    #
+    #
+    #@user = User.find(params[:user_id])
+    #@post = @user.posts.find(params[:id]
+
+    @post = Post.find(params[:id])
+
+    @topic = Topic.where(:title => @post.topic)
+
     @post.destroy
+
+    if Post.where(:topic => @topic[0].title).length == 0
+      @topic[0].destroy
+    end
+
     flash[:notice] = "Post was deleted"
     redirect_to posts_path
   end
