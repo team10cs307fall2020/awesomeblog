@@ -67,6 +67,15 @@ class PostsController < ApplicationController
     end
   end
 
+  def upvote
+    @post = Post.find(params[:id])
+    @post.vote += 1
+  end
+
+  def downvote
+    @post = Post.find(params[:id])
+    @post.vote -= 1
+  end
 
   def destroy
     # Destroy TBD
