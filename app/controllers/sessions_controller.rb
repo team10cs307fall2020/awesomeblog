@@ -9,7 +9,10 @@ class SessionsController < ApplicationController
       flash.now[:alert]= "Invalid User!"
       render 'login'
     else
-      if user.password == params[:password]
+      # flash.now[:notice]= params[:password]
+      # flash.now[:notice]= user.password
+      # Encrypt password and Compare
+      if user.password == Digest::MD5.hexdigest(params[:password])
         #login user set current_user
         session[:user_id] = user.id
         flash.now[:notice]= "Logged In"

@@ -1,3 +1,4 @@
+require 'digest/md5'
 class UsersController < ApplicationController
   #skip_before_action :authorized
   def new
@@ -10,10 +11,22 @@ class UsersController < ApplicationController
   #todo Create post/profile object when new user created
   def create
     @user = User.new(user_params)
-    @user.profile = Profile.create(Name: @user.username, Email: @user.email, Phone: "", Bio: "")
+    @user.profile = Profile.create(Name: @user.username, Email: @user.email)
     #@user.build_profile(Email: params[:email], Name: params[:username])
     session[:user_id] = @user.id
-    if @user.save
+
+    # Check before encrypt
+    unless @user.valid?
+      @user.errors
+      render 'signup'
+      return
+    end
+    # Encrypt
+    @user.password = Digest::MD5.hexdigest(@user.password)
+    @user.password_confirmation = Digest::MD5.hexdigest(@user.password_confirmation)
+    #flash.now[:alert] = @user.password
+
+    if @user.save!(:validate => false)  # Encrypt ignores validation
       #if @user.profile.save
       redirect_to login_path, notice: "User created!"
       #else
@@ -30,11 +43,16 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by(params[:username])
     @profile = @user.profile
     redirect_to user_profile_path(@profile)
   end
 
+  def view
+    @user = User.find_by(params[:username])
+    @profile = @user.profile
+    redirect_to profiles_view_path(@profile)
+  end
 
   def edit
     @user = User.find(params[:id])
