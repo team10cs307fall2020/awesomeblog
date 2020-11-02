@@ -28,6 +28,10 @@ Rails.application.routes.draw do
   get 'post/show'
   resources :posts do
     resources :comments
+    member do
+      get 'upvote' => 'posts#upvote', as: :upvote
+      get 'downvote' => 'posts#downvote', as: :downvote
+    end
   end
 
   # root 'post#index'

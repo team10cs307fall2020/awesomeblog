@@ -6,6 +6,7 @@ class CreatePosts < ActiveRecord::Migration[6.0]
       t.string :title
       t.text :text
       t.boolean :anonymous
+      t.integer :vote
 
       add_index :posts, :user_id
 

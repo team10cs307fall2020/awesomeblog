@@ -23,6 +23,12 @@
   <% end %>
 </p>
 
+<div>
+    <%= link_to "up", upvote_post_path(@post) %>
+    <%= link_to "down", downvote_post_path(@post) %>
+    <%= @post.vote %>
+  </div>
+
 <h2>Comments</h2>
 <% @post.comments.each do |comment| %>
   <p>
