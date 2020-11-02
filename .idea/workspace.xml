@@ -24,6 +24,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
+
     <list default="true" id="15872f0e-782c-4e26-88fa-9d5d26327994" name="Default Changelist" comment="Topic with post">
       <change beforePath="$PROJECT_DIR$/.idea/.generators" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.generators" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.rakeTasks" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.rakeTasks" afterDir="false" />
@@ -225,12 +226,13 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="246" y="378" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1601621604568" />
-    <state x="800" y="421" key="FileChooserDialogImpl" timestamp="1600464034024">
+    <state x="800" y="421" key="FileChooserDialogImpl" timestamp="1602078714468">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="800" y="421" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1600464034024" />
     <state width="1234" height="399" key="GridCell.Tab.0.bottom" timestamp="1603860015110">
       <screen x="0" y="0" width="2560" height="1440" />
+
     </state>
     <state width="1340" height="259" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1600463948315" />
     <state width="1234" height="399" key="GridCell.Tab.0.bottom/0.0.2560.1440@0.0.2560.1440" timestamp="1603860015110" />
