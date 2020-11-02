@@ -16,18 +16,16 @@
 
 <p>
   <strong>Posted by:</strong>
-  <% if @post.anonymous %>
-    <td>Anonymous
-  <% else %>
-    <td><%= link_to @post.author, users_view_path(@user)%>
-  <% end %>
+  <% if @post.anonymous == 1 %>
+    <td>Anonymous</td>
+  <% else @user = User.find_by(username: @post.author)%>
+    <% if current_user.username == @user.username %>
+      <td> Yourself </td>
+    <% else %>
+      <td><%= link_to @user.username, view_user_path(@user)%></td>
+    <% end %>
+<% end %>
 </p>
-
-<div>
-    <%= link_to "up", upvote_post_path(@post) %>
-    <%= link_to "down", downvote_post_path(@post) %>
-    <%= @post.vote %>
-  </div>
 
 <h2>Comments</h2>
 <% @post.comments.each do |comment| %>

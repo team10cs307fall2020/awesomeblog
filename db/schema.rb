@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2020_10_03_135946) do
     t.string "title"
     t.text "text"
     t.string "author"
+    t.bigint "anonymous"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

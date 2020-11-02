@@ -39,7 +39,11 @@ class PostsController < ApplicationController
   end
 
   def index
-    @post = Post.all
+    @post = Post.all.order(:updated_at).reverse_order
+  end
+
+  def userline
+    @user = User.find(params[:id])
   end
 
   def update
@@ -67,15 +71,6 @@ class PostsController < ApplicationController
     end
   end
 
-  def upvote
-    @post = Post.find(params[:id])
-    @post.vote += 1
-  end
-
-  def downvote
-    @post = Post.find(params[:id])
-    @post.vote -= 1
-  end
 
   def destroy
     # Destroy TBD
@@ -111,7 +106,7 @@ class PostsController < ApplicationController
     end
   end
   def post_params
-    params.require(:post).permit(:topic, :title, :text)
+    params.require(:post).permit(:topic, :title, :text, :anonymous)
   end
   
   def set_post
