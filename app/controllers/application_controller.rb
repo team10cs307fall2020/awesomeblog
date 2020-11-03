@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?
 
   def current_user
-    @current_user ||= User.find_by(id: session[:user_id])
+    @current_user ||= cookies[:auth_token] && User.find_by(auth_token:cookies[:auth_token])
   end
   def logged_in?
 

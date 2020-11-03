@@ -14,7 +14,11 @@ class SessionsController < ApplicationController
       # Encrypt password and Compare
       if user.password == Digest::MD5.hexdigest(params[:password])
         #login user set current_user
-        session[:user_id] = user.id
+        if params[:remember_me]
+          cookies.permanent[:auth_token] = user.auth_token
+        else
+          cookies[:auth_token] = user.auth_token
+        end
         flash.now[:notice]= "Logged In"
         redirect_to '/welcome'
       else
@@ -29,8 +33,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session.delete(:user_id)
-    session[:user_id] = nil
+    cookies.delete(:auth_token)
     flash.now[:notice] = "Logged out"
     redirect_to '/login'
   end
