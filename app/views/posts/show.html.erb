@@ -9,17 +9,25 @@
 
 <p>
   <strong>Text:</strong>
-  <%= @post.text %>
 </p>
+  <p>
+   <%= raw Rinku.auto_link(@post.text, mode = :all)%>
+  </p>
 
 <p>
   <strong>Posted by:</strong>
   <% if @post.anonymous %>
     <td>Anonymous
-  <% else  @user = User.find_by(username: current_user.username)%>
-    <td><%= @user.username %>
+  <% else %>
+    <td><%= link_to @post.author, users_view_path(@user)%>
   <% end %>
 </p>
+
+<div>
+    <%= link_to "up", upvote_post_path(@post) %>
+    <%= link_to "down", downvote_post_path(@post) %>
+    <%= @post.vote %>
+  </div>
 
 <h2>Comments</h2>
 <% @post.comments.each do |comment| %>

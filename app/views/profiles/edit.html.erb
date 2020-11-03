@@ -27,6 +27,10 @@
   </p>
 
   <p>
+    <%= f.label :Gender %><br>
+    <%= f.select :gender, %w{ Female Male Secret}, :include_blank => "Blank" %>
+  <p>
+  <p>
     <%= f.label :Bio %><br>
     <%= f.text_area :Bio %>
   </p>

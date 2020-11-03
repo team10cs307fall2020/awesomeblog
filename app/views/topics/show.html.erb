@@ -1,6 +1,3 @@
-<p>
-  <%= "New topic Created Successfully!" %>
-</p>
 
 
 <p>
@@ -26,18 +23,19 @@
   <th>Text</th>
   </tr>
 
-
+  <%@post = Post.where(:topic => @topic.title)%>
   <% for i in 0..Post.where(:topic => @topic.title).to_a.pluck(:title, :text).length - 1%>
     <tr>
-      <td> <%= @post = Post.where(:topic => @topic.title).pluck(:title, :text)[i][0] %></td>
-      <td> <%= @post = Post.where(:topic => @topic.title).pluck(:title, :text)[i][1] %></td>
+      <td> <%= @post.pluck(:title)[i] %></td>
+      <td> <%= @post.pluck(:title)[i] %></td>
+      <td> <%= link_to 'Check', post_path(@post.pluck(:id)[i]) %> </td>
     </tr>
   <% end %>
 
   </table>
 
 
-
+<p></p>
 <%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %> | <%= link_to 'Check', posts_path %>
+<%= link_to 'Back', topics_path %>
 

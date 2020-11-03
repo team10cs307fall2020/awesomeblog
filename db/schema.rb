@@ -27,19 +27,21 @@ ActiveRecord::Schema.define(version: 2020_10_03_135946) do
     t.string "topic"
     t.string "title"
     t.text "text"
+    t.string "author"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "user_id"
     t.string "Name"
     t.string "Email"
     t.string "Phone"
+    t.string "gender"
     t.text "Bio"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -51,9 +53,12 @@ ActiveRecord::Schema.define(version: 2020_10_03_135946) do
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "userid"
     t.string "username"
     t.string "password"
     t.string "email"
+    t.string "phone"
+    t.text "bio"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
