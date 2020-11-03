@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_03_135946) do
+ActiveRecord::Schema.define(version: 2020_11_03_135510) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "commenter"
@@ -18,11 +18,11 @@ ActiveRecord::Schema.define(version: 2020_10_03_135946) do
     t.bigint "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id"
     t.string "topic"
     t.string "title"
     t.text "text"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2020_10_03_135946) do
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "user_id"
     t.string "Name"
     t.string "Email"
     t.string "Phone"
@@ -41,7 +42,6 @@ ActiveRecord::Schema.define(version: 2020_10_03_135946) do
     t.text "Bio"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -53,14 +53,12 @@ ActiveRecord::Schema.define(version: 2020_10_03_135946) do
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "userid"
     t.string "username"
     t.string "password"
     t.string "email"
-    t.string "phone"
-    t.text "bio"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "auth_token"
   end
 
   add_foreign_key "comments", "posts"

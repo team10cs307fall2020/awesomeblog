@@ -16,11 +16,22 @@ class PasswordValidator < ActiveModel::EachValidator
 end
 
 class User < ApplicationRecord
+  before_create :generate_token
+
+  def generate_token
+    auth_token = nil
+    begin
+      auth_token = SecureRandom.urlsafe_base64
+      Rails.logger.info "===auth_token==========#{auth_token}"
+    end while User.exists?(auth_token:"#{auth_token}")
+    self.auth_token = auth_token
+  end
+
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_one :profile, dependent: :destroy
   validates :password, presence: true, password:true
   validates :password, confirmation: true
-  validates :username, presence: true
-  validates :email, presence:true, email:true
+  validates :username, presence: true, uniqueness: true
+  validates :email, presence:true, email:true, uniqueness: true
 end
