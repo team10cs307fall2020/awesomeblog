@@ -1,4 +1,4 @@
-<h1>User Profile</h1>
+<h1>Userline</h1>
 <%= link_to 'Log out', '/welcome'%><br>
 <%= link_to 'Back to topic', topics_path %><br><br><br><br><br>
 <%= link_to 'Make a post', new_post_path %>
@@ -20,7 +20,7 @@
         <td><%= post.title %></td>
         <td><%= post.text %></td>
         <td><%= post.created_at %>
-        <% if post.anonymous %>
+        <% if post.anonymous == 1 %>
         <td>Anonymous
           <% else %>
           <td><%= post.author %>

@@ -1,4 +1,9 @@
 <title> AwesomeBlogLoginPage </title>
+<% if logged_in? %>
+  <% controller.redirect_to '/welcome' %>
+<% end %>
+
+
 <%= form_tag '/login' do %>
 
   <p style="text-align: center">
@@ -11,9 +16,15 @@
     <%= password_field_tag :password%>
   </p>
 
+  <dl class="form remember-me", style="text-align: center">
+    <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+    <%= label_tag "Remember me" %>
+  </dl>
+
   <p style="text-align: center">
     <%= submit_tag "Login" %>
   </p>
 
+
 <% end %>
-<p style="font-size: x-small; text-align: center"><%= link_to 'Sign_up?', users_signup_path %></p>
+<p style="font-size: x-small; text-align: center"><%= link_to 'Sign_up?', users_signup_path, method: :get %></p>

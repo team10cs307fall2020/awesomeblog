@@ -1,3 +1,4 @@
+
 class CreatePosts < ActiveRecord::Migration[6.0]
   def change
     create_table :posts do |t|
@@ -5,7 +6,7 @@ class CreatePosts < ActiveRecord::Migration[6.0]
       t.string :topic
       t.string :title
       t.text :text
-      t.boolean :anonymous
+      t.string :anonymous
 
       add_index :posts, :user_id
 

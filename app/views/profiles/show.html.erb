@@ -23,6 +23,6 @@
   <strong>Bio:</strong>
   <%= @profile.Bio %>
 </p>
-
-<%= link_to 'Edit', edit_user_profile_path %>
+<br>
+<%= link_to 'Edit', edit_user_profile_path(@profile) %>
 <%= link_to 'Back', '/welcome' %>

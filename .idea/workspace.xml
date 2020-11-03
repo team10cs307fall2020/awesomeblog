@@ -24,18 +24,23 @@
     </select>
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="15872f0e-782c-4e26-88fa-9d5d26327994" name="Default Changelist" comment="">
+=======
+
     <list default="true" id="15872f0e-782c-4e26-88fa-9d5d26327994" name="Default Changelist" comment="Topic with post">
-      <change beforePath="$PROJECT_DIR$/.idea/.generators" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.generators" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.rakeTasks" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.rakeTasks" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/awesomeblog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/awesomeblog.iml" afterDir="false" />
+>>>>>>> 80139b6d92e902e6a718a2a14fd3885b20d82731
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/posts_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/posts_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/topics_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/topics_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers/application_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/application_helper.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/sessions_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/sessions_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/sessions_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/sessions_helper.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/posts/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/posts/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/topics/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/topics/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/topics/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/topics/show.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20200923225845_create_posts.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20200923225845_create_posts.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +56,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1hfiAlnYktWqefGAN0xgI7yiY4t" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -58,7 +66,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/views/users" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -67,6 +75,11 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.ruby.settings.RubyActiveModuleSdkConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Purdue University\CS 307 project\Project\awesomeblog\app\views\users" />
+    </key>
   </component>
   <component name="RubyModuleManagerSettings">
     <option name="blackListedRootsPaths">
@@ -183,13 +196,8 @@
       <workItem from="1601641948966" duration="799000" />
       <workItem from="1601643263966" duration="2543000" />
       <workItem from="1601646001370" duration="564000" />
-      <workItem from="1602037092829" duration="5935000" />
-      <workItem from="1602047025600" duration="160000" />
-      <workItem from="1602047272886" duration="603000" />
-      <workItem from="1602064160427" duration="651000" />
-      <workItem from="1603019612427" duration="5761000" />
-      <workItem from="1603846895221" duration="149000" />
-      <workItem from="1603859975656" duration="17519000" />
+      <workItem from="1601908985874" duration="6423000" />
+      <workItem from="1601993764162" duration="8705000" />
     </task>
     <task id="LOCAL-00001" summary="Topic with post">
       <created>1602047515275</created>
@@ -225,33 +233,38 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="246" y="378" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1601621604568" />
-    <state x="800" y="421" key="FileChooserDialogImpl" timestamp="1600464034024">
+    <state x="800" y="421" key="FileChooserDialogImpl" timestamp="1602078714468">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="800" y="421" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1600464034024" />
-    <state width="1234" height="399" key="GridCell.Tab.0.bottom" timestamp="1603860015110">
-      <screen x="0" y="0" width="2560" height="1440" />
+    <state x="800" y="421" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1602078714468" />
+    <state width="2517" height="393" key="GridCell.Tab.0.bottom" timestamp="1601993590372">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1340" height="259" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1600463948315" />
-    <state width="1234" height="399" key="GridCell.Tab.0.bottom/0.0.2560.1440@0.0.2560.1440" timestamp="1603860015110" />
-    <state width="1234" height="399" key="GridCell.Tab.0.center" timestamp="1603860015110">
-      <screen x="0" y="0" width="2560" height="1440" />
+    <state width="2517" height="393" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1601993590372" />
+    <state width="1236" height="404" key="GridCell.Tab.0.bottom/0.0.2560.1440@0.0.2560.1440" timestamp="1601624338879" />
+    <state width="2517" height="393" key="GridCell.Tab.0.center" timestamp="1601993590372">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1340" height="259" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1600463948314" />
-    <state width="1234" height="399" key="GridCell.Tab.0.center/0.0.2560.1440@0.0.2560.1440" timestamp="1603860015110" />
-    <state width="1234" height="399" key="GridCell.Tab.0.left" timestamp="1603860015110">
-      <screen x="0" y="0" width="2560" height="1440" />
+    <state width="2517" height="393" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1601993590372" />
+    <state width="1236" height="404" key="GridCell.Tab.0.center/0.0.2560.1440@0.0.2560.1440" timestamp="1601624338879" />
+    <state width="2517" height="393" key="GridCell.Tab.0.left" timestamp="1601993590372">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1340" height="259" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1600463948314" />
-    <state width="1234" height="399" key="GridCell.Tab.0.left/0.0.2560.1440@0.0.2560.1440" timestamp="1603860015110" />
-    <state width="1234" height="399" key="GridCell.Tab.0.right" timestamp="1603860015110">
-      <screen x="0" y="0" width="2560" height="1440" />
+    <state width="2517" height="393" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1601993590372" />
+    <state width="1236" height="404" key="GridCell.Tab.0.left/0.0.2560.1440@0.0.2560.1440" timestamp="1601624338879" />
+    <state width="2517" height="393" key="GridCell.Tab.0.right" timestamp="1601993590372">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
+    <state width="2517" height="393" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1601993590372" />
+    <state width="1236" height="404" key="GridCell.Tab.0.right/0.0.2560.1440@0.0.2560.1440" timestamp="1601624338879" />
+    <state x="155" y="354" key="SettingsEditor" timestamp="1601909063006">
+      <screen x="0" y="0" width="2560" height="1400" />
     <state width="1340" height="259" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1600463948315" />
     <state width="1234" height="399" key="GridCell.Tab.0.right/0.0.2560.1440@0.0.2560.1440" timestamp="1603860015110" />
     <state x="155" y="364" key="SettingsEditor" timestamp="1601621601203">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
+    <state x="155" y="354" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1601909063006" />
     <state x="155" y="364" key="SettingsEditor/0.0.2560.1440@0.0.2560.1440" timestamp="1601621601203" />
     <state x="402" y="752" key="Vcs.Push.Dialog.v2" timestamp="1602047599667">
       <screen x="0" y="0" width="2560" height="1440" />

@@ -1,0 +1,28 @@
+<h1><%= @user.username %>'s Userline</h1>
+<% @post = Post.all.order(:updated_at).reverse_order %>
+<table>
+  <% if @post[0] != nil %>
+    <tr>
+      <th>Title</th>
+      <th>Text</th>
+      <th>Posted at</th>
+      <th>User</th>
+    </tr>
+  <% else %>
+    <th> The user doesn't create any post.</th>
+  <% end %>
+
+  <% @post.each do |post| %>
+    <% if @user.username == post.author && post.anonymous != 1 %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.text %></td>
+        <td><%= post.created_at %>
+        <td><%= post.author %>
+
+        <td><%= link_to 'Show', post_path(post) %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+<%= link_to 'Back', view_user_path(@user) %>
