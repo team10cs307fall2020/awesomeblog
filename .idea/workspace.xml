@@ -25,6 +25,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15872f0e-782c-4e26-88fa-9d5d26327994" name="Default Changelist" comment="">
+
+    <list default="true" id="15872f0e-782c-4e26-88fa-9d5d26327994" name="Default Changelist" comment="Topic with post">
+      <change beforePath="$PROJECT_DIR$/.idea/awesomeblog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/awesomeblog.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/posts_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/posts_controller.rb" afterDir="false" />
