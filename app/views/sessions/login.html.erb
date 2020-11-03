@@ -1,4 +1,9 @@
 <title> AwesomeBlogLoginPage </title>
+<% if logged_in? %>
+  <% controller.redirect_to '/welcome' %>
+<% end %>
+
+
 <%= form_tag '/login' do %>
 
   <p style="text-align: center">
