@@ -11,25 +11,22 @@
 <p>
   <strong>Text:</strong>
 </p>
-  <p>
-   <%= raw Rinku.auto_link(@post.text, mode = :all)%>
-  </p>
+<p>
+  <%= raw Rinku.auto_link(@post.text, mode = :all)%>
+</p>
 
 <p>
   <strong>Posted by:</strong>
 
-
-
   <% if @post.anonymous == 1 %>
-    <td>Anonymous</td>
-  <% else @user = User.find_by(username: @post.author)%>
-    <% if current_user.username == @user.username %>
-      <td> Yourself </td>
-    <% else %>
-      <td><%= link_to @user.username, view_user_path(@user)%></td>
-    <% end %>
+  <td>Anonymous</td>
+<% else @user = User.find_by(username: @post.author)%>
+  <% if current_user.username == @user.username %>
+    <td> Yourself </td>
+  <% else %>
+    <td><%= link_to @user.username, view_user_path(@user)%></td>
+  <% end %>
 <% end %>
-
 </p>
 
 <h2>Comments</h2>

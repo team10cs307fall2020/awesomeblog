@@ -8,6 +8,11 @@ class PostsController < ApplicationController
     @user = User.find_by(username: current_user.username)
     @post = @user.posts.new(post_params)
     @post.author = @user.username
+    if params[:anonymous]
+      @post.anonymous = "1"
+    else
+      @post.anonymous = "0"
+    end
 
     if @post.save
 
@@ -40,6 +45,10 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.all.order(:updated_at).reverse_order
+  end
+
+  def userline
+    @user = User.find(params[:id])
   end
 
   def userline
