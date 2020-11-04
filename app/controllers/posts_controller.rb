@@ -17,7 +17,7 @@ class PostsController < ApplicationController
       else
         topic = Topic.new
         topic.title = @post.topic
-        topic.desc = "default"
+        topic.description = "default"
         topic.save!
         flash[:notice] = topic
       end
@@ -59,7 +59,7 @@ class PostsController < ApplicationController
       else
         topic = Topic.new
         topic.title = @post.topic
-        topic.desc = "default"
+        topic.description = "default"
         topic.save!
         flash[:notice] = topic
       end
