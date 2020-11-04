@@ -15,19 +15,18 @@
 
   <% @post.each do |post| %>
     <% @user = User.find_by(username: current_user.username) %>
-    <%# if @user.username == post.author %>
+    <% if @user.username == post.author %>
       <tr>
         <td><%= post.title %></td>
         <td><%= post.text %></td>
         <td><%= post.created_at %>
 
-          <% if false %>
+
 
         <% if post.anonymous == 1 %>
         <td>Anonymous
           <% else %>
           <td><%= post.author %>
-          <% end %>
 
         <% end %>
         <td><%= link_to 'Show', post_path(post) %></td>
@@ -36,6 +35,6 @@
                       method: :delete,
                       data: { confirm: 'Are you sure about that?' } %></td>
       </tr>
-    <%# end %>
+    <% end %>
   <% end %>
 </table>
