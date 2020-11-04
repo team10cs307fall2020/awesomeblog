@@ -1,0 +1,62 @@
+<h1>Following List</h1> <br><br><br><br><br>
+
+
+<table>
+  <% @user = User.find_by(username: current_user.username) %>
+  <% if Following.exists?(:user_id => @user.id, :category => "User") %>
+    <h2>Following Users</h2>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Followed at</th>
+    </tr>
+  <% else %>
+    <h2>You haven't followed any users! Find some users you like!</h2>
+    <%= link_to 'Go to topic', topics_path %>
+  <% end %>
+
+  <% @following.each do |following| %>
+    <% @user = User.find_by(username: current_user.username) %>
+
+    <% if @user.id == following.user_id and following.category == "User"%>
+      <% @target = User.find_by(username: following.name) %>
+      <tr>
+        <td><%= link_to following.name, view_user_path(@target) %></td>
+        <td><%= following.category %></td>
+        <td><%= following.created_at %>
+        <td><%= link_to 'Unfollow', following_path(following),
+                        method: :delete,
+                        data: { confirm: 'Are you sure about that?' } %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+<br><br><br><br>
+<table>
+  <% if Following.exists?(:user_id => @user.id, :category => "Topic") %>
+    <h2>Following Topics</h2>
+    <tr>
+      <th>Topic Name</th>
+      <th>Category</th>
+      <th>Followed at</th>
+    </tr>
+  <% else %>
+    <h2>You haven't followed any topics! Pick some topics you like!</h2>
+    <%= link_to 'Go to topic', topics_path %>
+  <% end %>
+
+  <% @following.each do |following| %>
+    <% @user = User.find_by(username: current_user.username) %>
+    <% if @user.id == following.user_id and following.category == "Topic"%>
+      <% @topic = Topic.find_by(title: following.name) %>
+      <tr>
+        <td><%= link_to following.name, topic_path(@topic) %></td>
+        <td><%= following.category %></td>
+        <td><%= following.created_at %>
+        <td><%= link_to 'Unfollow', following_path(following),
+                        method: :delete,
+                        data: { confirm: 'Are you sure about that?' } %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
