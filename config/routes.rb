@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :topics
 
   get 'followings/index'
+  get 'followings/follower'
   resources :followings
 
   post 'followings/new', to: 'followings#create'

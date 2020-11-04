@@ -42,6 +42,9 @@ class FollowingsController < ApplicationController
     end
   end
 
+  def follower
+    @following = Following.all
+  end
 
   def edit
   end
