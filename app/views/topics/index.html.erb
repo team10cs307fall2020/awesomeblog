@@ -5,9 +5,9 @@
   <% if @topics[0] != nil %>
     <tr>
       <th><%= sortable "title" %></th>
-      <th><%= sortable "desc(Rename)" %></th>
-      <th><%= sortable "count(Add)" %></th>
-      <th>Last Update</th>
+      <th><%= sortable "description" %></th>
+      <th><%= sortable "Count" %></th>
+      <th><%=sortable "updated_at"%></th>
       <th></th>
     </tr>
     <% else %>
@@ -20,10 +20,9 @@
 
 
       <td><%= topic.title %></td>
-      <td><%= topic.desc %></td>
+      <td><%= topic.description %></td>
       <td><%= Post.where(:topic => topic.title).length %></td>
       <td><%= Post.where(:topic => topic.title).pluck(:created_at).last %></td>
-
       <td><%= link_to 'Show', topic_path(topic) %></td>
       <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
 

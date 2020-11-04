@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
-  # belongs_to :topic
+
   has_many :comments, dependent: :destroy
   validates :topic, presence: { message: "topic cannot be empty" },
             length: {maximum: 100}
@@ -10,10 +10,6 @@ class Post < ApplicationRecord
             length: {maximum: 200}
   #attr_accessor :anonymous
   #validates :vote
-  #validates :anonymous, ...
-  # belongs_to :user
-  # belongs_to :topic
-end
 
 
 

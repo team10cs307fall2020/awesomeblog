@@ -16,25 +16,31 @@ Rails.application.routes.draw do
   get 'users/view'
   get 'users/show'
   get 'users/userline'
+
   get 'users/follow_user'
+
   get 'logout', to: 'sessions#destroy'
 
   resources :users do
     member do
       get 'view'
       get 'userline'
+
       get 'follow_user'
+
     end
     resources :profiles do
       member do
         get 'view'
       end
     end
+
     resources :followings do
       member do
         get 'follow_user'
       end
     end
+
   end
   root "sessions#login"
 
@@ -48,6 +54,7 @@ Rails.application.routes.draw do
   get 'posts/show'
   get 'posts/view'
   get 'posts/userline'
+
 
   get 'followings/index'
   get 'followings/show'
@@ -65,7 +72,9 @@ Rails.application.routes.draw do
     member do
       get 'follow_user'
       get 'view'
+
     end
+    resources :comments
   end
 
   # root 'post#index'

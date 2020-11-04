@@ -1,6 +1,7 @@
+<% @temp = Topic.where(:title => @post.topic) %>
 <p>
   <strong>Topic:</strong>
-  <%= @post.topic %>
+  <%= link_to @post.topic, topic_path(@temp.pluck(:id)[0]) %>
 </p>
 <p>
   <strong>Title:</strong>
@@ -16,6 +17,7 @@
 
 <p>
   <strong>Posted by:</strong>
+
   <% if @post.anonymous == 1 %>
   <td>Anonymous</td>
 <% else @user = User.find_by(username: @post.author)%>

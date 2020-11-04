@@ -43,13 +43,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(params[:username])
+    @user = User.find_by(username: current_user.username)
     @profile = @user.profile
     redirect_to user_profile_path(@profile)
   end
 
   def view
-    @user = User.find_by(params[:username])
+    @user = User.find(params[:id])
     @profile = @user.profile
     redirect_to view_user_profile_path(@profile)
   end
