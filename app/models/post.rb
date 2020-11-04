@@ -10,7 +10,7 @@ class Post < ApplicationRecord
             length: {maximum: 200}
   #attr_accessor :anonymous
   #validates :vote
-
+end
 
 
 #def aug

@@ -1,0 +1,30 @@
+<h1>Followers</h1> <br><br><br><br><br>
+
+
+<table>
+  <% @user = User.find_by(username: current_user.username) %>
+
+  <% if Following.exists?(:name => @user.username, :category => "User") %>
+    <% @count = Following.where(:name => @user.username, :category => "User").count %>
+    <h2>You have <%= @count %> followers!</h2>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Followed at</th>
+    </tr>
+  <% else %>
+    <h2>No one followed you yet...</h2>
+  <% end %>
+
+  <% @following.each do |following| %>
+
+    <% if @user.username == following.name and following.category == "User"%>
+      <% @target = User.find_by(id: following.user_id) %>
+      <tr>
+        <td><%= link_to @target.username, view_user_path(@target) %></td>
+        <td><%= following.category %></td>
+        <td><%= following.created_at %>
+      </tr>
+    <% end %>
+  <% end %>
+</table>

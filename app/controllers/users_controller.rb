@@ -1,6 +1,6 @@
 require 'digest/md5'
 class UsersController < ApplicationController
-  #skip_before_action :authorized
+  skip_before_action :authorized, :only => [:create, :signup]
   def new
     @user = User.new
   end
