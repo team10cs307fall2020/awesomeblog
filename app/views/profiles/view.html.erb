@@ -14,7 +14,12 @@
   <%= @profile.Bio %>
 </p>
 
-
+<% @user = User.find_by(:username => @profile.Name) %>
 <%= link_to 'Back to Topic', topics_path %>
-<%= link_to 'Follow', follow_user_user_following_path(:name => @profile.Name, :category => "User") %>
-<%= link_to 'Userline', userline_user_path(@profile.user) %>
+<% if @user.id != current_user.id and !Following.exists?(:user_id => current_user.id, :name => @user.username)%>
+  |
+  <%= link_to 'Follow', follow_user_user_following_path(:name => @profile.Name, :category => "User") %>
+<% end %>
+<br>
+<%= link_to 'Userline', userline_user_path(@profile.user) %> |
+<%= link_to 'Followings', view_following_path(@profile.user) %>

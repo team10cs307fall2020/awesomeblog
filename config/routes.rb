@@ -64,6 +64,7 @@ Rails.application.routes.draw do
   resources :followings do
     member do
       get 'follow_user'
+      get 'view'
     end
   end
 

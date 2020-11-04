@@ -53,6 +53,10 @@ class FollowingsController < ApplicationController
     redirect_to followings_path
   end
 
+  def view
+    @user = User.find(params[:id])
+  end
+
   def following_params
     params.permit(:name, :category)
   end
