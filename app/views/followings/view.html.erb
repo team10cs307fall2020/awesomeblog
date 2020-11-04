@@ -1,0 +1,51 @@
+<h1><%= @user.username %>'s Following List</h1> <br><br><br><br><br>
+
+
+<table>
+  <% if Following.exists?(:user_id => @user.id, :category => "User") %>
+    <h2>Following Users</h2>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Followed at</th>
+    </tr>
+  <% else %>
+    <h2><%= @user.username %> haven't followed anyone!</h2>
+  <% end %>
+  <% @following = Following.all %>
+  <% @following.each do |following| %>
+
+    <% if @user.id == following.user_id and following.category == "User"%>
+      <% @target = User.find_by(username: following.name) %>
+      <tr>
+        <td><%= link_to following.name, view_user_path(@target) %></td>
+        <td><%= following.category %></td>
+        <td><%= following.created_at %>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+<br><br><br><br>
+<table>
+  <% if Following.exists?(:user_id => @user.id, :category => "Topic") %>
+    <h2>Following Topics</h2>
+    <tr>
+      <th>Topic Name</th>
+      <th>Category</th>
+      <th>Followed at</th>
+    </tr>
+  <% else %>
+    <h2><%= @user.username %> haven't followed any topic!</h2>
+  <% end %>
+  <% @following = Following.all %>
+  <% @following.each do |following| %>
+    <% if @user.id == following.user_id and following.category == "Topic"%>
+      <% @topic = Topic.find_by(title: following.name) %>
+      <tr>
+        <td><%= link_to following.name, topic_path(@topic) %></td>
+        <td><%= following.category %></td>
+        <td><%= following.created_at %>
+      </tr>
+    <% end %>
+  <% end %>
+</table>

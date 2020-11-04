@@ -31,11 +31,10 @@
     <%= f.text_area :text %>
   </p>
 
-
-  <p>
-    <%= f.label :anonymous %>
-    <%= check_box("post", "anonymous") %>
-  </p>
+  <dl class="form anonymous">
+    <%= check_box_tag :anonymous, 1, params[:anonymous] %>
+    <%= label_tag "Anonymous" %>
+  </dl>
 
   <tr>
   <td width="15%"><b>image</b></td>

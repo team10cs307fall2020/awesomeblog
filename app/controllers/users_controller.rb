@@ -75,6 +75,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def follow_user
+    @user = current_user
+    @target = User.find(params[:id])
+    @following = @user.followings.create(:name => @target.username, :type => "User")
+
+  end
+
   def destroy
     @user = User.find(params[:id])
     @user.destroy
