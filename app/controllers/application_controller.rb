@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   #helper methods for recognizing current user
   # helper method for checking whether the user is logged in
-  #before_action :authorized
+  before_action :authorized
   helper_method :current_user
   helper_method :logged_in?
 
