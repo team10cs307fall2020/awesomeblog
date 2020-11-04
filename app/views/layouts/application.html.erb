@@ -10,12 +10,15 @@
 
   <style>
       ul.nav-section {
+
+
           list-style-type: none;
           margin: 0;
           padding: 0;
           overflow: hidden;
           background-color: #333;
       }
+
 
       li.nav-section {
           float: left;
@@ -67,7 +70,7 @@
 <div id="flash-messages-section">
   <% flash.each do |key, value| %>
     <div class="<%= flash_class(key) %> no-radius fade in">
-      <a href="#" data-dismiss="alert" class="close">脳</a>
+      <a href="#" data-dismiss="alert" class="close">Close</a>
       <ul>
         <li style="color: brown">
           <strong><%= flash_prefix(key)%></strong>&nbsp;<%= value %>
