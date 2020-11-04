@@ -84,6 +84,10 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
+    @following = Following.where(:name => @user.username, :category => "User")
+    @following.each { |followings|
+      Following.destroy(followings.id)
+    }
     @user.destroy
     flash[:notice] = "User was deleted"
     redirect_to login_path

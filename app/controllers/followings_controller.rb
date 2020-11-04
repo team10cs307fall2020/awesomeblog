@@ -26,11 +26,11 @@ class FollowingsController < ApplicationController
   def follow_user
 
     @user = current_user
-    if Following.exists?(:user_id => @user.id, :name => params[:name])
+    if Following.exists?(:user_id => @user.id, :name => params[:name], :category => params[:category])
 
       redirect_to followings_path, notice: "You've already followed this user!" and return
     end
-    @target = User.find(params[:id])
+    #@target = User.find(params[:id])
     @following = Following.new(following_params)
     @following.user = @user
     if @following.save
