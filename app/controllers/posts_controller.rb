@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   def create
     @user = User.find_by(username: current_user.username)
     @post = @user.posts.new(post_params)
-    @post.author = @user.username
+    #    @post.author = @user.username
 
     if @post.save
 
@@ -17,7 +17,7 @@ class PostsController < ApplicationController
       else
         topic = Topic.new
         topic.title = @post.topic
-        topic.desc = "default"
+        topic.description = "default"
         topic.save!
         flash[:notice] = topic
       end
@@ -59,7 +59,7 @@ class PostsController < ApplicationController
       else
         topic = Topic.new
         topic.title = @post.topic
-        topic.desc = "default"
+        topic.description = "default"
         topic.save!
         flash[:notice] = topic
       end
@@ -106,7 +106,7 @@ class PostsController < ApplicationController
     end
   end
   def post_params
-    params.require(:post).permit(:topic, :title, :text, :anonymous)
+    params.require(:post).permit(:topic, :title, :text)
   end
   
   def set_post

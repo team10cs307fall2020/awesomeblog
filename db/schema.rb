@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_03_135946) do
+ActiveRecord::Schema.define(version: 2020_11_03_081525) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "commenter"
@@ -26,8 +26,6 @@ ActiveRecord::Schema.define(version: 2020_10_03_135946) do
     t.string "topic"
     t.string "title"
     t.text "text"
-    t.string "author"
-    t.bigint "anonymous"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -47,7 +45,7 @@ ActiveRecord::Schema.define(version: 2020_10_03_135946) do
 
   create_table "topics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
-    t.text "desc"
+    t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
