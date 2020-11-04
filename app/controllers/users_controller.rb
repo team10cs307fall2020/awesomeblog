@@ -51,7 +51,12 @@ class UsersController < ApplicationController
   def view
     @user = User.find_by(params[:username])
     @profile = @user.profile
-    redirect_to profiles_view_path(@profile)
+    redirect_to view_user_profile_path(@profile)
+  end
+
+  def userline
+    @user = User.find(params[:id])
+    redirect_to userline_post_path(@user)
   end
 
   def edit
@@ -68,6 +73,13 @@ class UsersController < ApplicationController
       flash[:notice] = "User was not updated"
       render 'edit'
     end
+  end
+
+  def follow_user
+    @user = current_user
+    @target = User.find(params[:id])
+    @following = @user.followings.create(:name => @target.username, :type => "User")
+
   end
 
   def destroy

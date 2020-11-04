@@ -15,4 +15,6 @@
 </p>
 
 
-<%= link_to 'Back', posts_path %>
+<%= link_to 'Back to Topic', topics_path %>
+<%= link_to 'Follow', follow_user_user_following_path(:name => @profile.Name, :category => "User") %>
+<%= link_to 'Userline', userline_user_path(@profile.user) %>

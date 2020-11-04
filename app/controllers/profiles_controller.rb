@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @profile = Profile.find_by(params[:Name])
+    @profile = Profile.find_by(Name: current_user.username)
   end
 
   def new
@@ -35,7 +35,7 @@ class ProfilesController < ApplicationController
   end
 
   def view
-    @profile = Profile.find_by(params[:Name])
+    @profile = Profile.find(params[:id])
   end
 
   def destroy

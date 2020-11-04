@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   get 'topics/index'
   resources :topics
 
+  get 'followings/index'
+  resources :followings
 
+  post 'followings/new', to: 'followings#create'
   get 'login', to: 'sessions#login'
   post 'login', to: 'sessions#create'
   get 'welcome', to: 'sessions#welcome'
@@ -12,9 +15,26 @@ Rails.application.routes.draw do
   get 'users/signup'
   get 'users/view'
   get 'users/show'
+  get 'users/userline'
+  get 'users/follow_user'
   get 'logout', to: 'sessions#destroy'
+
   resources :users do
-    resources :profiles
+    member do
+      get 'view'
+      get 'userline'
+      get 'follow_user'
+    end
+    resources :profiles do
+      member do
+        get 'view'
+      end
+    end
+    resources :followings do
+      member do
+        get 'follow_user'
+      end
+    end
   end
   root "sessions#login"
 
@@ -24,13 +44,26 @@ Rails.application.routes.draw do
 
   # root 'profiles#show'
 
-  get 'post/index'
-  get 'post/show'
+  get 'posts/index'
+  get 'posts/show'
+  get 'posts/view'
+  get 'posts/userline'
+
+  get 'followings/index'
+  get 'followings/show'
+
+
   resources :posts do
-    resources :comments
     member do
-      get 'upvote' => 'posts#upvote', as: :upvote
-      get 'downvote' => 'posts#downvote', as: :downvote
+      get 'view'
+      get 'userline'
+    end
+    resources :comments
+  end
+
+  resources :followings do
+    member do
+      get 'follow_user'
     end
   end
 
