@@ -23,6 +23,18 @@
   <strong>Bio:</strong>
   <%= @profile.Bio %>
 </p>
-<br>
+
+<p>
+  <strong><%= link_to "Followings", followings_index_path%>:</strong>
+  <%= @profile.user.followings.length %>
+</p>
+
+<p>
+  <strong><%= link_to "Followers", followings_follower_path(@profile.user)%>:</strong>
+  <%= Following.where(:name => @profile.Name, :category => "User").count %>
+</p>
+
+<br><br>
 <%= link_to 'Edit', edit_user_profile_path(@profile) %>
 <%= link_to 'Back', '/welcome' %>
+<br>

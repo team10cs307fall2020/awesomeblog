@@ -36,6 +36,16 @@
   </p>
 
   <p>
+    <strong>Followings:</strong>
+    <%= @profile.user.followings.length %>
+  </p>
+
+  <p>
+    <strong>Followers:</strong>
+    <%= Following.where(:name => @profile.Name, :category => "User").count %>
+  </p>
+
+  <p>
     <%= f.submit %>
   </p>
 
