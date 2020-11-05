@@ -19,7 +19,7 @@
         <td><%= post.title %></td>
         <td><%= post.text %></td>
         <td><%= post.created_at %>
-        <% if post.anonymous %>
+        <% if post.anonymous == "1" %>
         <td>Anonymous
           <% else %>
           <td><%= post.author %>

@@ -51,10 +51,6 @@ class PostsController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def userline
-    @user = User.find(params[:id])
-  end
-
   def update
     @post = Post.find(params[:id])
 
