@@ -8,6 +8,7 @@ class PostsController < ApplicationController
     @user = User.find_by(username: current_user.username)
     @post = @user.posts.new(post_params)
     @post.author = @user.username
+    @post.vote = 0
     if params[:anonymous]
       @post.anonymous = "1"
     else
