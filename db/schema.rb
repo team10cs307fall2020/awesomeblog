@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_11_04_031030) do
 
-
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "commenter"
     t.text "body"
