@@ -15,15 +15,15 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 
-  # username: root
-  # password: awesomeblog
-  # host: localhost
+  username: root
+  password: awesomeblog
+  host: localhost
 
-  url: mysql2://b88adc811ec715:ada483e4@us-cdbr-east-02.cleardb.com/heroku_52ca4abbab99d7f?sslca=cleardb-ca.pem&sslcert=b88adc811ec715-cert.pem&sslkey=b88adc811ec715-key.pem&reconnect=true
-  host: "us-cdbr-east-02.cleardb.com"
-  database: "heroku_68bc1805849a0a0"
-  username: "b88adc811ec715"
-  password: "ada483e4"
+  # url: mysql2://b88adc811ec715:ada483e4@us-cdbr-east-02.cleardb.com/heroku_52ca4abbab99d7f?sslca=cleardb-ca.pem&sslcert=b88adc811ec715-cert.pem&sslkey=b88adc811ec715-key.pem&reconnect=true
+  # host: "us-cdbr-east-02.cleardb.com"
+  # database: "heroku_68bc1805849a0a0"
+  # username: "b88adc811ec715"
+  # password: "ada483e4"
 
 
 development:
