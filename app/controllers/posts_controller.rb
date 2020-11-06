@@ -41,14 +41,11 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comment = @post.comments.build
   end
 
   def index
     @post = Post.all.order(:updated_at).reverse_order
-  end
-
-  def userline
-    @user = User.find(params[:id])
   end
 
   def userline
