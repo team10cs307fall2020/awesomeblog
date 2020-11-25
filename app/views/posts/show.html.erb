@@ -29,6 +29,16 @@
 <% end %>
 </p>
 
+<p>
+  Upvotes: <%= @post.upvotelist.count %>
+  <%= link_to 'Upvote', @post, :method => upvote %>
+</p>
+
+<p>
+  Downvotes: <%= @post.downvotelist.count %>
+  <%= link_to 'DownVote', @post, :method => downvote %>
+</p>
+
 <!-- <h2>Comments</h2>
 <% @post.comments.each do |comment| %>
   <p>
