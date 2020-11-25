@@ -8,6 +8,9 @@ class Post < ApplicationRecord
             length: {maximum: 100}
   validates :text, presence: { message: "text cannot be empty" },
             length: {maximum: 200}
+  attr_accessor :author
+  serialize :upvotelist,Array
+  serialize :downvotelist,Array
   #attr_accessor :anonymous
   #validates :vote
 end
