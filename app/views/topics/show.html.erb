@@ -27,7 +27,7 @@
   <% for i in 0..Post.where(:topic => @topic.title).to_a.pluck(:title, :text).length - 1%>
     <tr>
       <td> <%= @post.pluck(:title)[i] %></td>
-      <td> <%= @post.pluck(:title)[i] %></td>
+      <td> <%= @post.pluck(:text)[i] %></td>
       <td> <%= link_to 'Check', post_path(@post.pluck(:id)[i]) %> </td>
     </tr>
   <% end %>

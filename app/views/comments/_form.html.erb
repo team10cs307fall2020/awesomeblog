@@ -1,7 +1,7 @@
-<%= form_for([@post, @post.comments.build]) do |f| %>
+<%= form_for([@post, @comment]) do |f| %>
   <p>
     <%= f.label :commenter %><br>
-    <%= f.text_field :commenter %>
+    <%= f.label current_user.username %>
   </p>
   <p>
     <%= f.label :body %><br>

@@ -8,11 +8,11 @@ class CreatePosts < ActiveRecord::Migration[6.0]
       t.text :text
       t.string :anonymous
 
-      t.integer :vote
 
 
       add_index :posts, :user_id
-
+      add_column :posts, :upvotelist, :text, array: true, default: []
+      add_column :posts, :downvotelist, :text, array: true, default: []
       t.timestamps
     end
   end
