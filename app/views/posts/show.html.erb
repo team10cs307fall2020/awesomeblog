@@ -1,63 +1,80 @@
-<% @temp = Topic.where(:title => @post.topic) %>
-<p>
-  <strong>Topic:</strong>
-  <%= link_to @post.topic, topic_path(@temp.pluck(:id)[0]) %>
-</p>
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+<% @user = User.find_by(:username => @post.author) %>
+<% if @user.id != current_user.id and Block.exists?(:user_id => @user.id, :name => current_user.username, :category => "User") %>
+  <h3>Sorry, seems that you have been blocked by this user, try to be nice!</h3>
+  <form>
+    <input type="button" value="Go Back" onclick="history.go(-1)">
+  </form>
+<% else %>
+
+
+
+
+
 
 <p>
-  <strong>Text:</strong>
-</p>
-<p>
-  <%= raw Rinku.auto_link(@post.text, mode = :all)%>
-</p>
-
-<p>
-  <strong>Posted by:</strong>
-
-  <% if @post.anonymous == 1 %>
-  <td>Anonymous</td>
-<% else @user = User.find_by(username: @post.author)%>
-  <% if current_user.username == @user.username %>
-    <td> Yourself </td>
-  <% else %>
-    <td><%= link_to @user.username, view_user_path(@user)%></td>
-  <% end %>
-<% end %>
-</p>
-
-<p>
-  Upvotes: <%= @post.upvotelist.count %>
-  <%= link_to 'Upvote', @post, :method => upvote %>
-</p>
-
-<p>
-  Downvotes: <%= @post.downvotelist.count %>
-  <%= link_to 'DownVote', @post, :method => downvote %>
+  Likes: <%= @post.get_upvotes.size %>
+  Dislikes: <%= @post.get_downvotes.size %>
+  <%= link_to 'UpVote', upvote_path(:id => @post.id) %>
+  <%= link_to 'DownVote', downvote_path(:id => @post.id) %>
 </p>
 
 <!-- <h2>Comments</h2>
 <% @post.comments.each do |comment| %>
+
   <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
+    <strong>Topic:</strong>
+    <%= link_to @post.topic, topic_path(@temp.pluck(:id)[0]) %>
+  </p>
+  <p>
+    <strong>Title:</strong>
+    <%= @post.title %>
   </p>
 
   <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
+    <strong>Text:</strong>
   </p>
+  <p>
+    <%= raw Rinku.auto_link(@post.text, mode = :all) %>
+  </p>
+
 <% end %> -->
 
 <h2>Comments</h2>
 <%= render @post.comments %>
 
-<h2>Add a comment:</h2>
-<%= render 'comments/form' %>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+  <p>
+    <strong>Posted by:</strong>
 
+    <% if @post.anonymous == 1 %>
+    <td>Anonymous</td>
+  <% else
+       @user = User.find_by(username: @post.author) %>
+    <% if current_user.username == @user.username %>
+      <td> Yourself</td>
+    <% else %>
+      <td><%= link_to @user.username, view_user_path(@user) %></td>
+    <% end %>
+  <% end %>
+  </p>
+
+  <h2>Comments</h2>
+  <% @post.comments.each do |comment| %>
+    <p>
+      <strong>Commenter:</strong>
+      <%= comment.commenter %>
+    </p>
+
+    <p>
+      <strong>Comment:</strong>
+      <%= comment.body %>
+    </p>
+  <% end %>
+
+  <h2>Add a comment:</h2>
+  <%= render 'comments/form' %>
+
+  <%= link_to 'Edit', edit_post_path(@post) %> |
+  <%= link_to 'Back', posts_path %>
+
+<% end %>

@@ -1,12 +1,25 @@
 Rails.application.routes.draw do
 
 
+  get 'blocks/index'
+  get 'blocks/new'
+  get 'blocks/create'
+  get 'blocks/show'
+  get 'blocks/block_user'
+  get 'blocks/blocked'
+  get 'blocks/destroy'
+
+  get 'blocks/view'
   get 'topics/index'
   resources :topics
 
   get 'followings/index'
   get 'followings/follower'
   resources :followings
+
+  get 'blocks/index'
+  get 'blocks/blocked'
+  resources :blocks
 
   post 'followings/new', to: 'followings#create'
   get 'login', to: 'sessions#login'
@@ -19,6 +32,9 @@ Rails.application.routes.draw do
   get 'users/userline'
 
   get 'users/follow_user'
+  
+  get "/upvote" => "posts#upvote"
+  get "/downvote" => "posts#downvote"
 
   get 'logout', to: 'sessions#destroy'
 
@@ -39,6 +55,12 @@ Rails.application.routes.draw do
     resources :followings do
       member do
         get 'follow_user'
+      end
+    end
+
+    resources :blocks do
+      member do
+        get 'block_user'
       end
     end
 
@@ -72,6 +94,15 @@ Rails.application.routes.draw do
   resources :followings do
     member do
       get 'follow_user'
+      get 'view'
+
+    end
+    resources :comments
+  end
+
+  resources :blocks do
+    member do
+      get 'block_user'
       get 'view'
 
     end
