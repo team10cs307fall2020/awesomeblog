@@ -130,7 +130,7 @@ class PostsController < ApplicationController
     end
   end
   def post_params
-    params.require(:post).permit(:topic, :title, :text, :anonymous)
+    params.require(:post).permit(:topic, :title, :text, :anonymous, :privacy)
   end
   
   def set_post

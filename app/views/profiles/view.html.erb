@@ -7,7 +7,17 @@
 <% else %>
 
 
+  <%@followings = current_user.followings %>
+  <%@temp = 0%>
 
+  <% for j in 0..@followings.length - 1%>
+    <%if @followings[j].name == @user.username%>
+      <% @temp = 1 %>
+    <%end %>
+  <%end %>
+
+<% if @profile.privacy != "None" %>
+    <% if @profile.privacy == "Everyone" or ( @profile.privacy == "Followers" and @temp == 1) %>
   <h1><%= @profile.Name %>'s Profile</h1>
   <p>
     <strong>Name:</strong>
@@ -23,6 +33,13 @@
     <strong>Bio:</strong>
     <%= @profile.Bio %>
   </p>
+
+    <%else%>
+    <p>You donnot have the permission to see this user's profile</p>
+      <%end %>
+  <%else%>
+    <p>You donnot have the permission to see this user's profile</p>
+<%end %>
 
 
   <% @user = User.find_by(:username => @profile.Name) %>

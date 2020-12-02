@@ -39,6 +39,29 @@
   <% else %>
 
     <h3 style="text-align: center">You haven't followed anything yet...</h3>
+    <h3 style="text-align: center">Featuring Topic Today</h3>
+    <% @topic = Topic.all.order('updated_at DESC').limit(3) %>
+    <table>
+      <% if @topic[0] != nil %>
+        <tr>
+          <th><%="title" %></th>
+          <th><%="description" %></th>
+          <th><%="Count" %></th>
+          <th><%="updated_at" %></th>
+          <th></th>
+        </tr>
+      <% end %>
+      <% @topic.each do |topic| %>
+        <tr>
+            <td><%= topic.title %></td>
+            <td><%= topic.description %></td>
+            <td><%= Post.where(:topic => topic.title).length %></td>
+            <td><%= Post.where(:topic => topic.title).pluck(:created_at).last %></td>
+            <td><%= link_to 'Show', topic_path(topic) %></td>
+        </tr>
+      <% end %>
+    </table>
+
   <% end %>
 
 <% end %>
