@@ -25,6 +25,7 @@
 
   <%@post = Post.where(:topic => @topic.title)%>
   <% for i in 0..Post.where(:topic => @topic.title).to_a.pluck(:title, :text).length - 1%>
+
     <% @user = User.find_by(username: @post.pluck(:author)[i]) %>
     <% unless Block.exists?(:user_id => @user.id, :name => current_user.username, :category => "User") or Block.exists?(:user_id => current_user.id, :name => @post.pluck(:author)[i], :category => "User")%>
       <tr>
@@ -33,6 +34,7 @@
         <td> <%= link_to 'Check', post_path(@post.pluck(:id)[i]) %> </td>
       </tr>
     <% end %>
+
   <% end %>
 
   </table>
