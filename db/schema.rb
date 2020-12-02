@@ -10,8 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_04_031030) do
+ActiveRecord::Schema.define(version: 2020_12_02_115704) do
 
+  create_table "blocks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name"
+    t.string "category"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_blocks_on_user_id"
+  end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "commenter"
@@ -70,6 +78,7 @@ ActiveRecord::Schema.define(version: 2020_11_04_031030) do
     t.string "auth_token"
   end
 
+  add_foreign_key "blocks", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "followings", "users"
 end
