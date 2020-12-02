@@ -16,6 +16,7 @@ class PasswordValidator < ActiveModel::EachValidator
 end
 
 class User < ApplicationRecord
+  acts_as_voter
   before_create :generate_token
 
   def generate_token

@@ -12,13 +12,10 @@
 
 
 <p>
-  Upvotes: <%= @post.upvotelist.count %>
-  <%= link_to 'Upvote', @post, :method => upvote %>
-</p>
-
-<p>
-  Downvotes: <%= @post.downvotelist.count %>
-  <%= link_to 'DownVote', @post, :method => downvote %>
+  Likes: <%= @post.get_upvotes.size %>
+  Dislikes: <%= @post.get_downvotes.size %>
+  <%= link_to 'UpVote', upvote_path(:id => @post.id) %>
+  <%= link_to 'DownVote', downvote_path(:id => @post.id) %>
 </p>
 
 <!-- <h2>Comments</h2>
