@@ -11,8 +11,6 @@ class CreatePosts < ActiveRecord::Migration[6.0]
 
 
       add_index :posts, :user_id
-      add_column :posts, :upvotelist, :text, array: true, default: []
-      add_column :posts, :downvotelist, :text, array: true, default: []
       t.timestamps
     end
   end
