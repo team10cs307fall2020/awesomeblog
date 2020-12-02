@@ -101,29 +101,25 @@ class PostsController < ApplicationController
   end
   
   def upvote
-    @user = User.find_by(username: current_user.username)
     @post = Post.find(params[:id])
-    if @post.upvotelist.include?(@user.username)
-      flash[:notice] = "cannot upvote multiple times"
-      end
-    if @post.downvotelist.include?(@user.username)
-      @post.downvotelist.delete(@user.username)
+    if current_user.up_votes @post
+      @post.liked_by current_user
+    else
+      @post.unliked_by current_user
     end
-    @post.upvotelist.push(@user.username)
-    redirect_to posts_path
+
+    redirect_to @post
   end
 
   def downvote
-    @user = User.find_by(username: current_user.username)
     @post = Post.find(params[:id])
-    if @post.downvotelist.include?(@user.username)
-      flash[:notice] = "cannot downvote multiple times"
+    if current_user.down_votes @post
+      @post.unliked_by current_user
+    else
+      @post.liked_by current_user
     end
-    if @post.upvotelist.include?(@user.username)
-      @post.upvotelist.delete(@user.username)
-    end
-    @post.downvotelist.push(@user.username)
-    redirect_to posts_path
+
+    redirect_to @post
   end
 
   private
