@@ -27,14 +27,36 @@
   <% for i in 0..Post.where(:topic => @topic.title).to_a.pluck(:title, :text).length - 1%>
 
     <% @user = User.find_by(username: @post.pluck(:author)[i]) %>
+    <%@followings = current_user.followings %>
+    <%@temp = 0%>
+
+    <% for j in 0..@followings.length - 1%>
+      <%if @followings[j].name == @user.username%>
+      <% @temp = 1 %>
+      <%end %>
+    <%end %>
+
     <% unless Block.exists?(:user_id => @user.id, :name => current_user.username, :category => "User") or Block.exists?(:user_id => current_user.id, :name => @post.pluck(:author)[i], :category => "User")%>
+      <% if @post.pluck(:privacy)[i] != "None" %>
+      <% if @user.id == current_user.id or @post.pluck(:privacy)[i] == "Everyone" or @post.pluck(:privacy)[i] == nil or (@post.pluck(:privacy)[i] == "Follower Only" and @temp == 1)%>
       <tr>
         <td> <%= @post.pluck(:title)[i] %></td>
-        <td> <%= @post.pluck(:title)[i] %></td>
+        <td> <%= @post.pluck(:text)[i] %></td>
         <td> <%= link_to 'Check', post_path(@post.pluck(:id)[i]) %> </td>
       </tr>
+        <% else %>
+          <tr>
+      <td> You don't have the permission to view this post</td>
+          </tr>
+      <% end %>
+      <% else %>
+        <tr>
+        <td> You don't have the permission to view this post</td>
+        </tr>
+      <% end %>
     <% end %>
 
+    <br/>
   <% end %>
 
   </table>
