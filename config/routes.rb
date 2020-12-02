@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   get 'users/userline'
 
   get 'users/follow_user'
+  
+  get "/upvote" => "posts#upvote"
+  get "/downvote" => "posts#downvote"
 
   get 'logout', to: 'sessions#destroy'
 
