@@ -104,8 +104,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if current_user.up_votes @post
       @post.liked_by current_user
-    else
-      @post.unliked_by current_user
     end
 
     redirect_to @post
@@ -114,9 +112,7 @@ class PostsController < ApplicationController
   def downvote
     @post = Post.find(params[:id])
     if current_user.down_votes @post
-      @post.unliked_by current_user
-    else
-      @post.liked_by current_user
+      @post.downvote_by current_user
     end
 
     redirect_to @post
