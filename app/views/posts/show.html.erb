@@ -6,8 +6,6 @@
   </form>
 <% else %>
 
-
-
   <% @temp = Topic.where(:title => @post.topic) %>
   <% @post.comments.each do |comment| %>
 
@@ -37,6 +35,15 @@
 
   <% end %>
 
+  <p>
+    <strong>Posted by:</strong>
+
+    <% if @post.anonymous == 1 %>
+    <td>Anonymous</td>
+  <% else @user = User.find_by(username: @post.author)%>
+    <%= link_to @user.username, view_user_path(@user) %>
+  <% end %>
+  </p>
 
 <p>
   Likes: <%= @post.get_upvotes.size %>
@@ -52,5 +59,14 @@
   alt="can not found image">
   <% end %>
 
-  
+<h2>Comments</h2>
+  <%= render @post.comments %>
+
+  <h2>Add a comment:</h2>
+  <%= render 'comments/form' %>
+
+
+  <%= link_to 'Edit', edit_post_path(@post) %> |
+  <%= link_to 'Back', posts_path %>
+
 <% end %>

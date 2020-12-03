@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-
+  get 'interactions/show'
+  get 'interactions/destroy'
+  get 'interactions/view'
 
   get 'blocks/index'
   get 'blocks/new'
@@ -61,6 +63,12 @@ Rails.application.routes.draw do
     resources :blocks do
       member do
         get 'block_user'
+      end
+    end
+
+    resources :interactions do
+      member do
+        get 'view'
       end
     end
 
