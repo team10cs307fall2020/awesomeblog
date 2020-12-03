@@ -53,6 +53,12 @@ class TopicsController < ApplicationController
     for i in 0..Post.where(:topic => @topic.title).length - 1
       @post[i].destroy
     end
+
+    @block = Block.where(:name => @topic.title, :category => "Topic")
+    @block.each { |blocks|
+      blocks.destroy
+    }
+
     @topic = Topic.find(params[:id])
     @topic.destroy
     redirect_to topics_path
