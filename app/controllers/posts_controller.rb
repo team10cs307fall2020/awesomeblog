@@ -97,6 +97,11 @@ class PostsController < ApplicationController
       @topic[0].destroy
     end
 
+    @interaction = Interaction.where(:postID => @post.id)
+    @interaction.each { |interactions|
+      interactions.destroy
+    }
+
     flash[:notice] = "Post was deleted"
     redirect_to posts_path
   end
