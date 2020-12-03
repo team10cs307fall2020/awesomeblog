@@ -26,18 +26,20 @@
 
 
   <% @user = User.find_by(:username => @profile.Name) %>
-  <%= link_to 'Back to Topic', topics_path %>
+
   <% if @user.id != current_user.id and !Following.exists?(:user_id => current_user.id, :name => @user.username, :category => "User") %>
     <% if @user.id != current_user.id and !Block.exists?(:user_id => current_user.id, :name => @user.username, :category => "User") %>
-      |
       <%= link_to 'Follow', follow_user_user_following_path(:name => @profile.Name, :category => "User") %>
     <% end %>
+  <% end %>
+  <% if @user.id != current_user.id and !Block.exists?(:user_id => current_user.id, :name => @user.username, :category => "User") %>
+    |
+    <%= link_to 'Block', block_user_user_block_path(:name => @profile.Name, :category => "User") %>
   <% end %>
   <br>
   <%= link_to 'Userline', userline_user_path(@profile.user) %> |
   <%= link_to 'Followings', view_following_path(@profile.user) %>
   <br>
-  <% if @user.id != current_user.id and !Block.exists?(:user_id => current_user.id, :name => @user.username, :category => "User") %>
-    <%= link_to 'Block', block_user_user_block_path(:name => @profile.Name, :category => "User") %>
-  <% end %>
+  <%= link_to "Send Message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: "post" %> |
+  <%= link_to 'Back to Topic', topics_path %>
 <% end %>
