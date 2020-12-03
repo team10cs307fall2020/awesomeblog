@@ -2,7 +2,7 @@
   <h3>Mailbox</h3>
   <div class="ui list">
     <div class="item">
-      <% @conversations.each do |conversation| %>
+      <% @conversations.order(:updated_at).reverse_order.each do |conversation| %>
         <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
           <% if conversation.sender_id == current_user.id %>
             <% recipient = User.find(conversation.recipient_id) %>
