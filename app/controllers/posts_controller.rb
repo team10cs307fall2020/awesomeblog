@@ -100,6 +100,24 @@ class PostsController < ApplicationController
     flash[:notice] = "Post was deleted"
     redirect_to posts_path
   end
+  
+  def upvote
+    @post = Post.find(params[:id])
+    if current_user.up_votes @post
+      @post.liked_by current_user
+    end
+
+    redirect_to @post
+  end
+
+  def downvote
+    @post = Post.find(params[:id])
+    if current_user.down_votes @post
+      @post.downvote_by current_user
+    end
+
+    redirect_to @post
+  end
 
   private
   def picture=(picture_field)
@@ -113,7 +131,9 @@ class PostsController < ApplicationController
     end
   end
   def post_params
-    params.require(:post).permit(:topic, :title, :text, :anonymous, :picture)
+
+    params.require(:post).permit(:topic, :title, :text, :anonymous, :picture, :privacy)
+
   end
   
   def set_post

@@ -39,6 +39,12 @@
   <%= f.file_field :picture %><br>
 
   <p>
+    <%= f.label :Privacy %><br>
+    <%= f.select :privacy, %w{ Everyone Followers None}%>
+  <p>
+
+
+  <p>
     <%= f.submit %>
   </p>
 

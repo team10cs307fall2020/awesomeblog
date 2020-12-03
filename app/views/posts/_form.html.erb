@@ -45,6 +45,16 @@
 <%= f.file_field :picture %><br>
 
   <p>
+    <b>Privacy( Who can view my Post? )</b><br />
+      <%= f.radio_button :privacy, 'Everyone' %>
+      <%= f.label :privacy, 'Everyone', :value => 'every' %>
+      <%= f.radio_button :privacy, 'None' %>
+      <%= f.label :privacy, 'None', :value => 'none' %>
+      <%= f.radio_button :privacy, 'Follower Only' %>
+      <%= f.label :privacy, 'Follower Only', :value => 'follow' %>
+  </p>
+
+  <p>
     <%= f.submit %>
   </p>
 

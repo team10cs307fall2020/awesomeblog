@@ -7,35 +7,61 @@
   <h1 style="text-align: center">Here you are, <%= current_user.username %></h1>
   <br><br><br>
   <% if @following[0] != nil %>
-    <h3 >Today's content</h3>
-  <table style="text-align: center">
+    <h3>Today's content</h3>
+    <table style="text-align: center">
       <tr>
         <th>Tittle</th>
         <th>Topic</th>
         <th>Posted at</th>
         <th>User</th>
       </tr>
-    <% @post = Post.all.order(:updated_at).reverse_order %>
-    <% @post.each do |post| %>
-      <% if Following.exists?(:user_id => @user.id, :name => post.author, :category => "User") or Following.exists?(:user_id => @user.id, :name => post.topic, :category => "Topic") %>
-          <tr>
-            <td><%= post.title %></td>
-            <td><%= post.topic %></td>
-            <td><%= post.created_at %>
-              <% if post.anonymous == 1 %>
-              <td>Anonymous
-            <% else %>
-              <td><%= post.author %>
-            <% end %>
-            <td><%= link_to 'Show', post_path(post) %></td>
-          </tr>
+      <% @post = Post.all.order(:updated_at).reverse_order %>
+      <% @post.each do |post| %>
+        <% if Following.exists?(:user_id => @user.id, :name => post.author, :category => "User") or Following.exists?(:user_id => @user.id, :name => post.topic, :category => "Topic") %>
+          <% unless Block.exists?(:user_id => User.find_by(username: post.author).id, :name => current_user.username, :category => "User") or Block.exists?(:user_id => current_user.id, :name => post.author, :category => "User") or
+              Block.exists?(:user_id => current_user.id, :name => post.topic, :category => "Topic")%>
+            <tr>
+              <td><%= post.title %></td>
+              <td><%= post.topic %></td>
+              <td><%= post.created_at %>
+                <% if post.anonymous == 1 %>
+                <td>Anonymous
+              <% else %>
+                <td><%= post.author %>
+              <% end %>
+              <td><%= link_to 'Show', post_path(post) %></td>
+            </tr>
+          <% end %>
+        <% end %>
       <% end %>
-    <% end %>
 
-  </table>
+    </table>
   <% else %>
 
     <h3 style="text-align: center">You haven't followed anything yet...</h3>
+    <h3 style="text-align: center">Featuring Topic Today</h3>
+    <% @topic = Topic.all.order('updated_at DESC').limit(3) %>
+    <table>
+      <% if @topic[0] != nil %>
+        <tr>
+          <th><%="title" %></th>
+          <th><%="description" %></th>
+          <th><%="Count" %></th>
+          <th><%="updated_at" %></th>
+          <th></th>
+        </tr>
+      <% end %>
+      <% @topic.each do |topic| %>
+        <tr>
+            <td><%= topic.title %></td>
+            <td><%= topic.description %></td>
+            <td><%= Post.where(:topic => topic.title).length %></td>
+            <td><%= Post.where(:topic => topic.title).pluck(:created_at).last %></td>
+            <td><%= link_to 'Show', topic_path(topic) %></td>
+        </tr>
+      <% end %>
+    </table>
+
   <% end %>
 
 <% end %>

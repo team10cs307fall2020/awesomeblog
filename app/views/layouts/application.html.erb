@@ -93,7 +93,7 @@
       <div class="dropdown-content">
         <%= link_to "Logout", logout_path, method: :get, data: { confirm: 'Are you sure about that?' }%>
         <%= link_to "Delete Account", user_path(current_user), method: :delete, data: { confirm: 'Are you sure?' }%>
-        <a href="#">Settings</a>
+        <%= link_to "Settings", blocks_index_path%>
       </div>
     </li>
   </ul>

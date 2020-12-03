@@ -16,6 +16,7 @@ class PasswordValidator < ActiveModel::EachValidator
 end
 
 class User < ApplicationRecord
+  acts_as_voter
   before_create :generate_token
 
   def generate_token
@@ -30,6 +31,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   #has_many :comments, dependent: :destroy
   has_many :followings, dependent: :destroy
+  has_many :blocks, dependent: :destroy
   has_one :profile, dependent: :destroy
   validates :password, presence: true, password:true
   validates :password, confirmation: true
