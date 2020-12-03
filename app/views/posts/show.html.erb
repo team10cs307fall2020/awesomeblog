@@ -6,23 +6,34 @@
   </form>
 <% else %>
 
-
   <% @temp = Topic.where(:title => @post.topic) %>
-  <p>
-    <strong>Topic:</strong>
-    <%= link_to @post.topic, topic_path(@temp.pluck(:id)[0]) %>
-  </p>
-  <p>
-    <strong>Title:</strong>
-    <%= @post.title %>
-  </p>
+  <% @post.comments.each do |comment| %>
 
-  <p>
-    <strong>Text:</strong>
-  </p>
-  <p>
-    <%= raw Rinku.auto_link(@post.text, mode = :all)%>
-  </p>
+    <p>
+      <strong>Topic:</strong>
+      <%= link_to @post.topic, topic_path(@temp.pluck(:id)[0]) %>
+    </p>
+    <p>
+      <strong>Title:</strong>
+      <%= @post.title %>
+    </p>
+
+    <p>
+      <strong>Text:</strong>
+      <%= @post.text %>
+    </p>
+
+    <p>
+      <strong>Privacy:</strong>
+      <%= @post.privacy %>
+    </p>
+
+
+    <p>
+      <%= raw Rinku.auto_link(@post.text, mode = :all) %>
+    </p>
+
+  <% end %>
 
   <p>
     <strong>Posted by:</strong>
@@ -34,28 +45,21 @@
   <% end %>
   </p>
 
-  <p>
-    Likes: <%= @post.get_upvotes.size %>
-    Dislikes: <%= @post.get_downvotes.size %>
-    <%= link_to 'UpVote', upvote_path(:id => @post.id) %>
-    <%= link_to 'DownVote', downvote_path(:id => @post.id) %>
-  </p>
+<p>
+  Likes: <%= @post.get_upvotes.size %>
+  Dislikes: <%= @post.get_downvotes.size %>
+  <%= link_to 'UpVote', upvote_path(:id => @post.id) %>
+  <%= link_to 'DownVote', downvote_path(:id => @post.id) %>
+</p>
 
 
-  <!-- <h2>Comments</h2>
-<% @post.comments.each do |comment| %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
+<% if @post.picture.attached? %>
+  <img src="<%=(url_for(@post.picture))%>"
+  height="500"
+  alt="can not found image">
+  <% end %>
 
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
-<% end %> -->
-
-  <h2>Comments</h2>
+<h2>Comments</h2>
   <%= render @post.comments %>
 
   <h2>Add a comment:</h2>

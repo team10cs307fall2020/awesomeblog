@@ -24,6 +24,11 @@
   <%= @profile.Bio %>
 </p>
 
+<% if @profile.picture.attached? %>
+  <img src="<%=(url_for(@profile.picture))%>"
+  height="200">
+<% end %>
+
 <p>
   <strong><%= link_to "Followings", followings_index_path%>:</strong>
   <%= @profile.user.followings.length %>
@@ -37,6 +42,7 @@
 <br><br>
 <% @user = User.find_by(username: current_user.username) %>
 <%= link_to 'My interactions', interactions_show_path %>
+
 <br>
 <%= link_to 'Edit', edit_user_profile_path(@profile) %>
 <%= link_to 'Back', '/welcome' %>

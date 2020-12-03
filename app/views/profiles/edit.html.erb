@@ -35,6 +35,15 @@
     <%= f.text_area :Bio %>
   </p>
 
+  <%= f.label "Post picture" %>
+  <%= f.file_field :picture %><br>
+
+  <p>
+    <%= f.label :Privacy %><br>
+    <%= f.select :privacy, %w{ Everyone Followers None}%>
+  <p>
+
+
   <p>
     <strong>Followings:</strong>
     <%= @profile.user.followings.length %>
