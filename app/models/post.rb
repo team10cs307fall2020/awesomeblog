@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  acts_as_votable
   belongs_to :user
 
   has_many :comments, dependent: :destroy
@@ -8,11 +9,10 @@ class Post < ApplicationRecord
             length: {maximum: 100}
   validates :text, presence: { message: "text cannot be empty" },
             length: {maximum: 200}
-  attr_accessor :author
-  serialize :upvotelist,Array
-  serialize :downvotelist,Array
   #attr_accessor :anonymous
   #validates :vote
+  has_one_attached :picture, dependent: :destroy
+
 end
 
 

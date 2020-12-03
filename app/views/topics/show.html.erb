@@ -21,20 +21,44 @@
   <tr>
   <th>Title</th>
   <th>Text</th>
+    <th>Likes</th>
   </tr>
 
   <%@post = Post.where(:topic => @topic.title)%>
-  <% for i in 0..Post.where(:topic => @topic.title).to_a.pluck(:title, :text).length - 1%>
+  <% @post.sort_by { | pvote | pvote.get_upvotes.size }.reverse.each do |post|%>
 
-    <% @user = User.find_by(username: @post.pluck(:author)[i]) %>
-    <% unless Block.exists?(:user_id => @user.id, :name => current_user.username, :category => "User") or Block.exists?(:user_id => current_user.id, :name => @post.pluck(:author)[i], :category => "User")%>
+    <% @user = User.find_by(username: post.author) %>
+    <%@followings = current_user.followings %>
+    <%@temp = 0%>
+
+    <% for j in 0..@followings.length - 1%>
+      <%if @followings[j].name == @user.username%>
+      <% @temp = 1 %>
+      <%end %>
+    <%end %>
+
+    <% unless Block.exists?(:user_id => @user.id, :name => current_user.username, :category => "User") or Block.exists?(:user_id => current_user.id, :name => post.author, :category => "User")%>
+      <% if post.privacy != "None" %>
+      <% if @user.id == current_user.id or post.privacy == "Everyone" or post.privacy == nil or (post.privacy == "Follower Only" and @temp == 1)%>
       <tr>
-        <td> <%= @post.pluck(:title)[i] %></td>
-        <td> <%= @post.pluck(:title)[i] %></td>
-        <td> <%= link_to 'Check', post_path(@post.pluck(:id)[i]) %> </td>
+        <td> <%= post.title %></td>
+        <td> <%= post.text %></td>
+        <td> <%= post.get_upvotes.size %></td>
+        <td> <%= link_to 'Check', post_path(post) %> </td>
       </tr>
+        <% else %>
+          <tr>
+      <td> You don't have the permission to view this post</td>
+          </tr>
+      <% end %>
+      <% else %>
+        <tr>
+        <td> You don't have the permission to view this post</td>
+        </tr>
+      <% end %>
     <% end %>
 
+    <br/>
   <% end %>
 
   </table>

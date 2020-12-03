@@ -7,22 +7,58 @@
 <% else %>
 
 
+  <%@followings = current_user.followings %>
+  <%@temp = 0%>
 
+
+<p>
+  <% if @profile.picture.attached? %>
+    <img src="<%=(url_for(@profile.picture))%>"
+    height="200">
+  <% end %>
+</p>
+
+
+  <% for j in 0..@followings.length - 1%>
+    <%if @followings[j].name == @user.username%>
+      <% @temp = 1 %>
+    <%end %>
+  <%end %>
+
+
+<% if @profile.privacy != "None" %>
+
+    <% if @profile.privacy == "Everyone" or @profile.privacy == nil  or ( @profile.privacy == "Followers" and @temp == 1) %>
   <h1><%= @profile.Name %>'s Profile</h1>
   <p>
     <strong>Name:</strong>
     <%= @profile.Name %>
   </p>
 
-  <p>
-    <strong>Gender:</strong>
-    <%= @profile.gender %>
-  </p>
+      <p>
+        <strong>Gender:</strong>
+        <%= @profile.gender %>
+      </p>
 
-  <p>
-    <strong>Bio:</strong>
-    <%= @profile.Bio %>
-  </p>
+      <p>
+        <strong>Bio:</strong>
+        <%= @profile.Bio %>
+      </p>
+      <p>
+        <strong><%= link_to "Followings", followings_index_path%>:</strong>
+        <%= @profile.user.followings.length %>
+      </p>
+
+      <p>
+        <strong><%= link_to "Followers", followings_follower_path(@profile.user)%>:</strong>
+        <%= Following.where(:name => @profile.Name, :category => "User").count %>
+      </p>
+    <%else%>
+    <p>You donnot have the permission to see this user's profile</p>
+      <%end %>
+  <%else%>
+    <p>You donnot have the permission to see this user's profile</p>
+<%end %>
 
 
   <% @user = User.find_by(:username => @profile.Name) %>
@@ -38,6 +74,7 @@
   <% end %>
   <br>
   <%= link_to 'Userline', userline_user_path(@profile.user) %> |
+  <%= link_to 'Interactions', view_user_interaction_path(@profile.user) %> |
   <%= link_to 'Followings', view_following_path(@profile.user) %>
   <br>
   <%= link_to "Send Message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: "post" %> |

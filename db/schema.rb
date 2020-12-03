@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 2020_12_03_101631) do
     t.index ["user_id"], name: "index_followings_on_user_id"
   end
 
+
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "body"
     t.bigint "conversation_id"
@@ -78,6 +79,16 @@ ActiveRecord::Schema.define(version: 2020_12_03_101631) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "interactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "postID"
+    t.string "category"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_interactions_on_user_id"
+
+  end
+
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "topic"
     t.string "title"
@@ -87,6 +98,7 @@ ActiveRecord::Schema.define(version: 2020_12_03_101631) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "privacy"
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -98,6 +110,7 @@ ActiveRecord::Schema.define(version: 2020_12_03_101631) do
     t.text "Bio"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "privacy"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -106,6 +119,7 @@ ActiveRecord::Schema.define(version: 2020_12_03_101631) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "count"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -117,8 +131,25 @@ ActiveRecord::Schema.define(version: 2020_12_03_101631) do
     t.string "auth_token"
   end
 
+  create_table "votes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "votable_type"
+    t.bigint "votable_id"
+    t.string "voter_type"
+    t.bigint "voter_id"
+    t.boolean "vote_flag"
+    t.string "vote_scope"
+    t.integer "vote_weight"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
+    t.index ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id"
+    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
+    t.index ["voter_type", "voter_id"], name: "index_votes_on_voter_type_and_voter_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "blocks", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "followings", "users"
+  add_foreign_key "interactions", "users"
 end

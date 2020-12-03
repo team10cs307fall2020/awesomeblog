@@ -37,6 +37,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @post.picture.attach(params[:picture])
   end
 
   def show
@@ -101,29 +102,40 @@ class PostsController < ApplicationController
   end
   
   def upvote
-    @user = User.find_by(username: current_user.username)
     @post = Post.find(params[:id])
-    if @post.upvotelist.include?(@user.username)
-      flash[:notice] = "cannot upvote multiple times"
-      end
-    if @post.downvotelist.include?(@user.username)
-      @post.downvotelist.delete(@user.username)
+    if current_user.up_votes @post
+      @post.liked_by current_user
     end
-    @post.upvotelist.push(@user.username)
-    redirect_to posts_path
+    @user = User.find_by(username: current_user.username)
+    if Interaction.find_by(postID: @post.id).nil?
+      @interaction = @user.interactions.create(:postID => @post.id, :category => "Upvote")
+    else
+      @interaction = Interaction.find_by(postID: @post.id)
+      if @interaction.category == "Downvote"
+        @interaction.destroy
+        @interaction = @user.interactions.create(:postID => @post.id, :category => "Upvote")
+      end
+    end
+
+    redirect_to @post
   end
 
   def downvote
-    @user = User.find_by(username: current_user.username)
     @post = Post.find(params[:id])
-    if @post.downvotelist.include?(@user.username)
-      flash[:notice] = "cannot downvote multiple times"
+    if current_user.down_votes @post
+      @post.downvote_by current_user
     end
-    if @post.upvotelist.include?(@user.username)
-      @post.upvotelist.delete(@user.username)
+    @user = User.find_by(username: current_user.username)
+    if Interaction.find_by(postID: @post.id).nil?
+      @interaction = @user.interactions.create(:postID => @post.id, :category => "Downvote")
+    else
+      @interaction = Interaction.find_by(postID: @post.id)
+      if @interaction.category == "Upvote"
+        @interaction.destroy
+        @interaction = @user.interactions.create(:postID => @post.id, :category => "Downvote")
+      end
     end
-    @post.downvotelist.push(@user.username)
-    redirect_to posts_path
+    redirect_to @post
   end
 
   private
@@ -138,7 +150,9 @@ class PostsController < ApplicationController
     end
   end
   def post_params
-    params.require(:post).permit(:topic, :title, :text, :anonymous)
+
+    params.require(:post).permit(:topic, :title, :text, :anonymous, :picture, :privacy)
+
   end
   
   def set_post

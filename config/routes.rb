@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-
+  get 'interactions/show'
+  get 'interactions/destroy'
+  get 'interactions/view'
 
   get 'messages/index'
   get 'messages/new'
@@ -37,6 +39,9 @@ Rails.application.routes.draw do
   get 'users/userline'
 
   get 'users/follow_user'
+  
+  get "/upvote" => "posts#upvote"
+  get "/downvote" => "posts#downvote"
 
   get 'logout', to: 'sessions#destroy'
 
@@ -63,6 +68,12 @@ Rails.application.routes.draw do
     resources :blocks do
       member do
         get 'block_user'
+      end
+    end
+
+    resources :interactions do
+      member do
+        get 'view'
       end
     end
 

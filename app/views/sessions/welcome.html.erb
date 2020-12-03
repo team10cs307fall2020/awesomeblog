@@ -20,6 +20,7 @@
         <% if Following.exists?(:user_id => @user.id, :name => post.author, :category => "User") or Following.exists?(:user_id => @user.id, :name => post.topic, :category => "Topic") %>
           <% unless Block.exists?(:user_id => User.find_by(username: post.author).id, :name => current_user.username, :category => "User") or Block.exists?(:user_id => current_user.id, :name => post.author, :category => "User") or
               Block.exists?(:user_id => current_user.id, :name => post.topic, :category => "Topic")%>
+            <% if post.privacy != "None"%>
             <tr>
               <td><%= post.title %></td>
               <td><%= post.topic %></td>
@@ -31,6 +32,7 @@
               <% end %>
               <td><%= link_to 'Show', post_path(post) %></td>
             </tr>
+              <%end %>
           <% end %>
         <% end %>
       <% end %>
@@ -39,6 +41,48 @@
   <% else %>
 
     <h3 style="text-align: center">You haven't followed anything yet...</h3>
+    <h3 style="text-align: center">Featuring Topic Today</h3>
+    <% @topic = Topic.all.order('updated_at DESC').limit(3) %>
+    <table>
+      <% if @topic[0] != nil %>
+        <tr>
+          <th><%="title" %></th>
+          <th><%="description" %></th>
+          <th><%="Count" %></th>
+          <th><%="updated_at" %></th>
+          <th></th>
+        </tr>
+      <% end %>
+      <% @topic.each do |topic| %>
+        <tr>
+            <td><%= topic.title %></td>
+            <td><%= topic.description %></td>
+            <td><%= Post.where(:topic => topic.title).length %></td>
+            <td><%= Post.where(:topic => topic.title).pluck(:created_at).last %></td>
+            <td><%= link_to 'Show', topic_path(topic) %></td>
+        </tr>
+      <% end %>
+    </table>
+
   <% end %>
+
+  <h2 style="text-align: center">You are possibly interested in</h2>
+  <%@count = 0 %>
+  <%@users = User.where.not(:id => current_user.id) %>
+
+  <%@users.each do |u| %>
+    <%@count = 0 %>
+    <%u.followings.each do |fo| %>
+      <%@following.each do |f| %>
+        <%if fo.name == f.name %>
+          <%@count+= 1 %>
+        <%end %>
+        <%end %>
+      <%end %>
+    <% if @count != 0 %>
+    User <%=link_to u.username ,view_user_path(u)%>who shares <%=@count %> common topics with you!
+      <br>
+    <%end %>
+    <%end %>
 
 <% end %>

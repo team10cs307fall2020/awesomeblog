@@ -25,6 +25,10 @@ default: &default
   # username: "b88adc811ec715"
   # password: "ada483e4"
 
+local: 
+  service: Disk
+  root: <%= Rails.root.join("storage") %>
+
 
 development:
   <<: *default
@@ -36,6 +40,8 @@ development:
 test:
   <<: *default
   database: AwesomeBlog_test
+  service: Disk
+  root: <%= Rails.root.join("tmp/storage") %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
