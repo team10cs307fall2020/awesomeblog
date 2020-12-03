@@ -28,22 +28,30 @@
 
 <% if @profile.privacy != "None" %>
     <% if @profile.privacy == "Everyone" or ( @profile.privacy == "Followers" and @temp == 1) %>
-  <h1><%= @profile.Name %>'s Profile</h1>
-  <p>
-    <strong>Name:</strong>
-    <%= @profile.Name %>
-  </p>
+      <h1><%= @profile.Name %>'s Profile</h1>
+      <p>
+        <strong>Name:</strong>
+        <%= @profile.Name %>
+      </p>
 
-  <p>
-    <strong>Gender:</strong>
-    <%= @profile.gender %>
-  </p>
+      <p>
+        <strong>Gender:</strong>
+        <%= @profile.gender %>
+      </p>
 
-  <p>
-    <strong>Bio:</strong>
-    <%= @profile.Bio %>
-  </p>
+      <p>
+        <strong>Bio:</strong>
+        <%= @profile.Bio %>
+      </p>
+      <p>
+        <strong><%= link_to "Followings", followings_index_path%>:</strong>
+        <%= @profile.user.followings.length %>
+      </p>
 
+      <p>
+        <strong><%= link_to "Followers", followings_follower_path(@profile.user)%>:</strong>
+        <%= Following.where(:name => @profile.Name, :category => "User").count %>
+      </p>
     <%else%>
     <p>You donnot have the permission to see this user's profile</p>
       <%end %>
