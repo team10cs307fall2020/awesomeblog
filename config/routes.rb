@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
 
+  get 'messages/index'
+  get 'messages/new'
+  get 'messages/create'
+  get 'conversations/index'
+  get 'conversations/create'
   get 'blocks/index'
   get 'blocks/new'
   get 'blocks/create'
@@ -69,6 +74,10 @@ Rails.application.routes.draw do
   get 'profiles/view'
 
   # root 'profiles#show'
+
+  resources :conversations do
+    resources :messages
+  end
 
   get 'posts/index'
   get 'posts/show'
