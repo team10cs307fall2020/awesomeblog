@@ -66,4 +66,23 @@
 
   <% end %>
 
+  <h2 style="text-align: center">You are possibly interested in</h2>
+  <%@count = 0 %>
+  <%@users = User.where.not(:id => current_user.id) %>
+
+  <%@users.each do |u| %>
+    <%@count = 0 %>
+    <%u.followings.each do |fo| %>
+      <%@following.each do |f| %>
+        <%if fo.name == f.name %>
+          <%@count+= 1 %>
+        <%end %>
+        <%end %>
+      <%end %>
+    <% if @count != 0 %>
+    User <%=link_to u.username ,view_user_path(u)%>who shares <%=@count %> common topics with you!
+      <br>
+    <%end %>
+    <%end %>
+
 <% end %>
