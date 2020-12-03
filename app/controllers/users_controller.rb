@@ -59,6 +59,11 @@ class UsersController < ApplicationController
     redirect_to userline_post_path(@user)
   end
 
+  def interaction
+    @user = User.find(params[:id])
+    redirect_to view_user_interaction_path(@user)
+  end
+
   def edit
     @user = User.find(params[:id])
   end

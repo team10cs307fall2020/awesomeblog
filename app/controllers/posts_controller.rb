@@ -105,6 +105,16 @@ class PostsController < ApplicationController
     if current_user.up_votes @post
       @post.liked_by current_user
     end
+    @user = User.find_by(username: current_user.username)
+    if Interaction.find_by(postID: @post.id).nil?
+      @interaction = @user.interactions.create(:postID => @post.id, :category => "Upvote")
+    else
+      @interaction = Interaction.find_by(postID: @post.id)
+      if @interaction.category == "Downvote"
+        @interaction.destroy
+        @interaction = @user.interactions.create(:postID => @post.id, :category => "Upvote")
+      end
+    end
 
     redirect_to @post
   end
@@ -114,7 +124,16 @@ class PostsController < ApplicationController
     if current_user.down_votes @post
       @post.downvote_by current_user
     end
-
+    @user = User.find_by(username: current_user.username)
+    if Interaction.find_by(postID: @post.id).nil?
+      @interaction = @user.interactions.create(:postID => @post.id, :category => "Downvote")
+    else
+      @interaction = Interaction.find_by(postID: @post.id)
+      if @interaction.category == "Upvote"
+        @interaction.destroy
+        @interaction = @user.interactions.create(:postID => @post.id, :category => "Downvote")
+      end
+    end
     redirect_to @post
   end
 

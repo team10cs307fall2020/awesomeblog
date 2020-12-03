@@ -1,0 +1,27 @@
+<h1>Interactions</h1>
+<% @user = User.find_by(username: current_user.username) %>
+<% @interaction = @user.interactions.all.order(:updated_at).reverse_order %>
+<table>
+  <% if @interaction[0] != nil %>
+    <tr>
+      <th>Title</th>
+      <th>Type</th>
+      <th>Interacted at</th>
+    </tr>
+  <% else %>
+    <th> You didn't interact with any post.</th>
+  <% end %>
+
+  <% @interaction.each do |interaction| %>
+    <% @post = Post.find_by(id: interaction.postID) %>
+      <tr>
+        <td><%= @post.title %></td>
+        <td><%= interaction.category %></td>
+        <td><%= interaction.updated_at %>
+
+        <td><%= link_to 'Show', post_path(@post) %></td>
+      </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Back', user_path(@user)%>

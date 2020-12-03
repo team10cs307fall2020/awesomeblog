@@ -35,6 +35,9 @@
 </p>
 
 <br><br>
+<% @user = User.find_by(username: current_user.username) %>
+<%= link_to 'My interactions', interactions_show_path %>
+<br>
 <%= link_to 'Edit', edit_user_profile_path(@profile) %>
 <%= link_to 'Back', '/welcome' %>
 <br>
