@@ -7,8 +7,6 @@
 <% else %>
 
   <% @temp = Topic.where(:title => @post.topic) %>
-  <% @post.comments.each do |comment| %>
-
     <p>
       <strong>Topic:</strong>
       <%= link_to @post.topic, topic_path(@temp.pluck(:id)[0]) %>
@@ -20,7 +18,7 @@
 
     <p>
       <strong>Text:</strong>
-      <%= @post.text %>
+      <%= raw Rinku.auto_link(@post.text, mode = :all) %>
     </p>
 
     <p>
@@ -31,11 +29,6 @@
       <%end %>
     </p>
 
-
-    <p>
-      <%= raw Rinku.auto_link(@post.text, mode = :all) %>
-    </p>
-
   <% end %>
 
   <p>
@@ -44,38 +37,40 @@
     <% if @post.anonymous == 1 %>
     <td>Anonymous</td>
   <% else @user = User.find_by(username: @post.author)%>
-    <%= link_to @user.username, view_user_path(@user) %>
-  <% end %>
-  </p>
-
-<p>
-  Likes: <%= @post.get_upvotes.size %>
-  Dislikes: <%= @post.get_downvotes.size %>
-  <%= link_to 'UpVote', upvote_path(:id => @post.id) %>
-  <%= link_to 'DownVote', downvote_path(:id => @post.id) %>
-</p>
-
-
-<% if @post.picture.attached? %>
-  <img src="<%=(url_for(@post.picture))%>"
-  height="500"
-  alt="can not found image">
-  <% end %>
-
-<% @post.comments.each do |comment| %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
+    <% if @post.author == current_user.username %>
+      <td>Yourself</td>
+    <% else %>
+      <%= link_to @user.username, view_user_path(@user) %>
+    <% end %>
   </p>
 
   <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
+    Likes: <%= @post.get_upvotes.size %>
+    Dislikes: <%= @post.get_downvotes.size %>
+    <%= link_to 'UpVote', upvote_path(:id => @post.id) %>
+    <%= link_to 'DownVote', downvote_path(:id => @post.id) %>
   </p>
-<% end %> -->
 
-<h2>Comments</h2>
-  <%= render @post.comments %>
+
+  <% if @post.picture.attached? %>
+    <img src="<%=(url_for(@post.picture))%>"
+    height="500"
+    alt="can not found image">
+  <% end %>
+
+  <h2>Comments</h2>
+  <% @post.comments.each do |comment| %>
+    <% if comment.commenter != nil && comment.body != nil %>
+      <p>
+        <strong>Commenter:</strong>
+        <%= comment.commenter %>
+      </p>
+      <p>
+        <strong>Comment:</strong>
+        <%= comment.body %>
+      </p>
+    <% end %>
+  <% end %>
 
   <h2>Add a comment:</h2>
   <%= render 'comments/form' %>
