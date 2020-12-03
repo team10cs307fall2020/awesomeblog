@@ -20,7 +20,8 @@
 
     <p>
       <strong>Text:</strong>
-      <%= @post.text %>
+
+      <%= raw Rinku.auto_link(@post.text, mode = :all) %>
     </p>
 
     <p>
