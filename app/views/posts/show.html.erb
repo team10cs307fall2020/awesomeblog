@@ -26,6 +26,9 @@
     <p>
       <strong>Privacy:</strong>
       <%= @post.privacy %>
+      <%if @post.privacy == nil %>
+      <%="Everyone"%>
+      <%end %>
     </p>
 
 
