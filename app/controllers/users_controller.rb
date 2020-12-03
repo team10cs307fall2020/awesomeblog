@@ -93,6 +93,18 @@ class UsersController < ApplicationController
     @following.each { |followings|
       Following.destroy(followings.id)
     }
+    @block = Block.where(:name => @user.username, :category => "User")
+    @block.each { |blocks|
+      blocks.destroy
+    }
+    @conversation = Conversation.where(:sender_id => @user.id)
+    @conversation.each { |conversations|
+      conversations.destroy
+    }
+    @conversation = Conversation.where(:recipient_id => @user.id)
+    @conversation.each { |conversations|
+      conversations.destroy
+    }
     @user.destroy
     flash[:notice] = "User was deleted"
     redirect_to login_path

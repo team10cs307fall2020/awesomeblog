@@ -10,24 +10,24 @@
       <th>Category</th>
       <th>Blocked at</th>
     </tr>
+
+    <% @block.each do |block| %>
+      <% @user = User.find_by(username: current_user.username) %>
+
+      <% if @user.id == block.user_id and block.category == "User"%>
+        <% @target = User.find_by(username: block.name) %>
+        <tr>
+          <td><%= link_to block.name, view_user_path(@target) %></td>
+          <td><%= block.category %></td>
+          <td><%= block.created_at %>
+          <td><%= link_to 'Unblock', block_path(block),
+                          method: :delete,
+                          data: { confirm: 'Are you sure about that?' } %></td>
+        </tr>
+      <% end %>
+    <% end %>
   <% else %>
     <h2>You haven't Blocked any users.</h2>
-  <% end %>
-
-  <% @block.each do |block| %>
-    <% @user = User.find_by(username: current_user.username) %>
-
-    <% if @user.id == block.user_id and block.category == "User"%>
-      <% @target = User.find_by(username: block.name) %>
-      <tr>
-        <td><%= link_to block.name, view_user_path(@target) %></td>
-        <td><%= block.category %></td>
-        <td><%= block.created_at %>
-        <td><%= link_to 'Unblock', block_path(block),
-                        method: :delete,
-                        data: { confirm: 'Are you sure about that?' } %></td>
-      </tr>
-    <% end %>
   <% end %>
 </table>
 <br><br><br><br>
@@ -39,22 +39,22 @@
       <th>Category</th>
       <th>Followed at</th>
     </tr>
+
+    <% @block.each do |block| %>
+      <% @user = User.find_by(username: current_user.username) %>
+      <% if @user.id == block.user_id and block.category == "Topic"%>
+        <% @topic = Topic.find_by(title: block.name) %>
+        <tr>
+          <td><%= link_to block.name, topic_path(@topic) %></td>
+          <td><%= block.category %></td>
+          <td><%= block.created_at %>
+          <td><%= link_to 'Unblock', block_path(block),
+                          method: :delete,
+                          data: { confirm: 'Are you sure about that?' } %></td>
+        </tr>
+      <% end %>
+    <% end %>
   <% else %>
     <h2>You haven't blocked any topics.</h2>
-  <% end %>
-
-  <% @block.each do |block| %>
-    <% @user = User.find_by(username: current_user.username) %>
-    <% if @user.id == block.user_id and block.category == "Topic"%>
-      <% @topic = Topic.find_by(title: block.name) %>
-      <tr>
-        <td><%= link_to block.name, topic_path(@topic) %></td>
-        <td><%= block.category %></td>
-        <td><%= block.created_at %>
-        <td><%= link_to 'Unblock', block_path(block),
-                        method: :delete,
-                        data: { confirm: 'Are you sure about that?' } %></td>
-      </tr>
-    <% end %>
   <% end %>
 </table>

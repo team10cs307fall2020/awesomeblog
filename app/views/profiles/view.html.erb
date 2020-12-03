@@ -45,12 +45,12 @@
         <%= @profile.Bio %>
       </p>
       <p>
-        <strong><%= link_to "Followings", followings_index_path%>:</strong>
+        <strong>Followings:</strong>
         <%= @profile.user.followings.length %>
       </p>
 
       <p>
-        <strong><%= link_to "Followers", followings_follower_path(@profile.user)%>:</strong>
+        <strong>Followers:</strong>
         <%= Following.where(:name => @profile.Name, :category => "User").count %>
       </p>
     <%else%>
