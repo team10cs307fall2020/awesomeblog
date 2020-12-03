@@ -3,6 +3,8 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.create(comment_params)
     @comment.commenter = current_user.username
+    @user = User.find_by(username: current_user.username)
+    @interaction = @user.interactions.create(:postID => @post.id, :category => "Comment")
     if @comment.save
       redirect_to post_path(@post)
       end
@@ -12,6 +14,8 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
     @comment.destroy
+    @interaction = Interaction.find_by(postID: @post.id, category: "Comment")
+    @interaction.destroy
     redirect_to post_path(@post)
   end
 
