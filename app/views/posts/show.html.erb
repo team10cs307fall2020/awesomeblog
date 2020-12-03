@@ -59,6 +59,18 @@
   alt="can not found image">
   <% end %>
 
+<% @post.comments.each do |comment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+<% end %> -->
+
 <h2>Comments</h2>
   <%= render @post.comments %>
 
