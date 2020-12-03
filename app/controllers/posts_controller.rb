@@ -41,14 +41,11 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comment = @post.comments.build
   end
 
   def index
     @post = Post.all.order(:updated_at).reverse_order
-  end
-
-  def userline
-    @user = User.find(params[:id])
   end
 
   def userline
@@ -100,6 +97,32 @@ class PostsController < ApplicationController
     end
 
     flash[:notice] = "Post was deleted"
+    redirect_to posts_path
+  end
+  
+  def upvote
+    @user = User.find_by(username: current_user.username)
+    @post = Post.find(params[:id])
+    if @post.upvotelist.include?(@user.username)
+      flash[:notice] = "cannot upvote multiple times"
+      end
+    if @post.downvotelist.include?(@user.username)
+      @post.downvotelist.delete(@user.username)
+    end
+    @post.upvotelist.push(@user.username)
+    redirect_to posts_path
+  end
+
+  def downvote
+    @user = User.find_by(username: current_user.username)
+    @post = Post.find(params[:id])
+    if @post.downvotelist.include?(@user.username)
+      flash[:notice] = "cannot downvote multiple times"
+    end
+    if @post.upvotelist.include?(@user.username)
+      @post.upvotelist.delete(@user.username)
+    end
+    @post.downvotelist.push(@user.username)
     redirect_to posts_path
   end
 

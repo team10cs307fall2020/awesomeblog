@@ -1,4 +1,4 @@
-p>
+<p>
 <strong>Commenter:</strong>
 <%= comment.commenter %>
 </p>
@@ -8,8 +8,15 @@ p>
   <%= comment.body %>
 </p>
 
+<% if comment.id.nil?%>
+  
+  <%else%>
+  <p>
+    <%= link_to 'Edit', edit_post_comment_path(@post, comment) %>
+  </p>  
 <p>
-  <%= link_to 'Destroy Comment', [comment.article, comment],
+  <%= link_to 'Destroy Comment', [comment.post, comment],
               method: :delete,
               data: { confirm: 'Are you sure about that?' } %>
 </p>
+<%end%>

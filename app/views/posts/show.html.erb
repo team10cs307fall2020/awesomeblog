@@ -10,7 +10,20 @@
 
 
 
-  <% @temp = Topic.where(:title => @post.topic) %>
+
+<p>
+  Upvotes: <%= @post.upvotelist.count %>
+  <%= link_to 'Upvote', @post, :method => upvote %>
+</p>
+
+<p>
+  Downvotes: <%= @post.downvotelist.count %>
+  <%= link_to 'DownVote', @post, :method => downvote %>
+</p>
+
+<!-- <h2>Comments</h2>
+<% @post.comments.each do |comment| %>
+
   <p>
     <strong>Topic:</strong>
     <%= link_to @post.topic, topic_path(@temp.pluck(:id)[0]) %>
@@ -26,6 +39,12 @@
   <p>
     <%= raw Rinku.auto_link(@post.text, mode = :all) %>
   </p>
+
+<% end %> -->
+
+<h2>Comments</h2>
+<%= render @post.comments %>
+
 
   <p>
     <strong>Posted by:</strong>

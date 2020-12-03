@@ -19,11 +19,11 @@ default: &default
   password: awesomeblog
   host: localhost
 
-  # url: mysql2://bcd54921d7d8f5:d2be3974@us-cdbr-east-02.cleardb.com/heroku_68bc1805849a0a0?sslca=cleardb-ca.pem&sslcert=bcd54921d7d8f5-cert.pem&sslkey=bcd54921d7d8f5-key.pem&reconnect=true
+  # url: mysql2://b88adc811ec715:ada483e4@us-cdbr-east-02.cleardb.com/heroku_52ca4abbab99d7f?sslca=cleardb-ca.pem&sslcert=b88adc811ec715-cert.pem&sslkey=b88adc811ec715-key.pem&reconnect=true
   # host: "us-cdbr-east-02.cleardb.com"
   # database: "heroku_68bc1805849a0a0"
-  # username: "bcd54921d7d8f5"
-  # password: "d2be3974"
+  # username: "b88adc811ec715"
+  # password: "ada483e4"
 
 
 development:
