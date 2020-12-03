@@ -34,6 +34,7 @@ class User < ApplicationRecord
   has_many :blocks, dependent: :destroy
   has_many :interactions, dependent: :destroy
   has_one :profile, dependent: :destroy
+  has_many :conversations, :foreign_key => :sender_id, dependent: :destroy
   validates :password, presence: true, password:true
   validates :password, confirmation: true
   validates :username, presence: true, uniqueness: true
