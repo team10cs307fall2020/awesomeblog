@@ -37,6 +37,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @post.picture.attach(params[:picture])
   end
 
   def show
@@ -112,7 +113,7 @@ class PostsController < ApplicationController
     end
   end
   def post_params
-    params.require(:post).permit(:topic, :title, :text, :anonymous)
+    params.require(:post).permit(:topic, :title, :text, :anonymous, :picture)
   end
   
   def set_post

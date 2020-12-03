@@ -36,10 +36,13 @@
     <%= label_tag "Anonymous" %>
   </dl>
 
-  <tr>
+  <!-- <tr>
   <td width="15%"><b>image</b></td>
   <td><%= file_field 'post', 'picture' %></td>
-  </tr>
+  </tr> -->
+
+<%= f.label "Post picture" %>
+<%= f.file_field :picture %><br>
 
   <p>
     <%= f.submit %>

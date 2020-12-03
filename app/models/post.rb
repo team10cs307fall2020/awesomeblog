@@ -10,6 +10,8 @@ class Post < ApplicationRecord
             length: {maximum: 200}
   #attr_accessor :anonymous
   #validates :vote
+  has_one_attached :picture, dependent: :destroy
+
 end
 
 

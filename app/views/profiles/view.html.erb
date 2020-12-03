@@ -14,6 +14,13 @@
   <%= @profile.Bio %>
 </p>
 
+<p>
+  <% if @profile.picture.attached? %>
+    <img src="<%=(url_for(@profile.picture))%>"
+    height="200">
+  <% end %>
+</p>
+
 
 <% @user = User.find_by(:username => @profile.Name) %>
 <%= link_to 'Back to Topic', topics_path %>

@@ -29,6 +29,12 @@
 <% end %>
 </p>
 
+<% if @post.picture.attached? %>
+  <img src="<%=(url_for(@post.picture))%>"
+  height="500">
+  <% end %>
+
+
 <!-- <h2>Comments</h2>
 <% @post.comments.each do |comment| %>
   <p>
