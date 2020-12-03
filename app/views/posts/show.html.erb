@@ -31,11 +31,6 @@
       <%end %>
     </p>
 
-
-    <p>
-      <%= raw Rinku.auto_link(@post.text, mode = :all) %>
-    </p>
-
   <% end %>
 
   <p>
@@ -44,7 +39,11 @@
     <% if @post.anonymous == 1 %>
     <td>Anonymous</td>
   <% else @user = User.find_by(username: @post.author)%>
-    <%= link_to @user.username, view_user_path(@user) %>
+    <% if @post.author == current_user.username %>
+      <td>Yourself</td>
+    <% else %>
+      <%= link_to @user.username, view_user_path(@user) %>
+    <% end %>
   <% end %>
   </p>
 
