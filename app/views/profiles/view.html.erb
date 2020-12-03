@@ -27,7 +27,7 @@
 
 
 <% if @profile.privacy != "None" %>
-    <% if @profile.privacy == "Everyone" or ( @profile.privacy == "Followers" and @temp == 1) %>
+    <% if @profile.privacy == "Everyone" or @profile.privacy == nil  or ( @profile.privacy == "Followers" and @temp == 1) %>
   <h1><%= @profile.Name %>'s Profile</h1>
   <p>
     <strong>Name:</strong>
